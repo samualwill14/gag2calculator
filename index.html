@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grow a Garden 2 Calculator | Plants, Growth, Pets, Gears & Values</title>
+    <link rel="canonical" href="https://gag2.inficalc.com/" />
+    <meta name="description" content="Fanmade Grow a Garden 2 calculator & wiki – plant values, growth estimates, pet abilities, gear stats, tier lists, sheckles, guild rewards, and night stealing mechanics." />
+    <meta name="keywords" content="Grow a Garden 2 calculator, Grow a Garden 2 values, Grow a Garden 2 plants, Grow a Garden 2 plant growth, Grow a Garden 2 pets, Grow a Garden 2 gear, Grow a Garden 2 wiki, GAG2 calculator, Grow a Garden 2 tier list" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070708;
+            --card: #111114;
+            --accent: #10b981;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+        * { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: #ececed; margin: 0; padding: 0; }
+        
+        /* Premium Inputs */
+        input[type="number"], select {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 12px; color: #fff; width: 100%; outline: none; transition: all 0.2s;
+        }
+        input:focus { border-color: var(--accent); background: rgba(16, 185, 129, 0.05); }
+
+        input[type="range"] { -webkit-appearance: none; background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: var(--accent); cursor: pointer; box-shadow: 0 0 10px rgba(16,185,129,0.4); }
+
+        /* Plant Grid - ALWAYS 5 columns on all devices */
+        .plant-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        
+        .plant-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .plant-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .plant-card.selected { border-color: var(--accent); background: rgba(16, 185, 129, 0.15); box-shadow: 0 0 15px rgba(16,185,129,0.1); }
+        
+        .plant-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 6px;
+            background: #0a0a0c;
+        }
+        
+        /* Plant name text */
+        .plant-name-text {
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #e4e4e7;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            display: block;
+            letter-spacing: -0.2px;
+            margin: 2px 0;
+        }
+        
+        /* Rarity badges inside plant cards - distinct colors */
+        .plant-card .rarity,
+        .plant-card .rarity-badge,
+        .plant-card [class*="rarity"],
+        .plant-card .plant-rarity,
+        .plant-card .badge {
+            font-size: 7px !important;
+            padding: 2px 6px !important;
+            margin: 2px 0 0 0 !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            display: inline-block;
+            line-height: 1.2;
+            border-radius: 20px;
+            font-weight: 800;
+        }
+        
+        /* Common */
+        .plant-card .rarity.common,
+        .plant-card [class*="rarity"].common,
+        .plant-card .badge.common {
+            background: #3f3f46 !important;
+            color: #d4d4d8 !important;
+        }
+        /* Rare */
+        .plant-card .rarity.rare,
+        .plant-card [class*="rarity"].rare,
+        .plant-card .badge.rare {
+            background: #2563eb !important;
+            color: white !important;
+        }
+        /* Epic */
+        .plant-card .rarity.epic,
+        .plant-card [class*="rarity"].epic,
+        .plant-card .badge.epic {
+            background: #9333ea !important;
+            color: white !important;
+        }
+        /* Legendary */
+        .plant-card .rarity.legendary,
+        .plant-card [class*="rarity"].legendary,
+        .plant-card .badge.legendary {
+            background: #f59e0b !important;
+            color: black !important;
+        }
+        /* Default fallback */
+        .plant-card .rarity {
+            background: rgba(255,255,255,0.1) !important;
+            color: #a1a1aa !important;
+        }
+
+        /* Decay buttons */
+        .decay-btn { flex: 1; padding: 12px; border-radius: 10px; font-weight: 800; font-size: 11px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); cursor: pointer; transition: 0.2s; }
+        .decay-btn.active { background: #fff; color: #000; border-color: #fff; }
+
+        .mut-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 8px 4px; font-size: 10px; font-weight: 700; transition: 0.2s; }
+        .mut-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+        .main-container { max-width: 100%; padding: 0 16px; }
+        @media (min-width: 1280px) { .main-container { max-width: 1200px; margin: 0 auto; } }
+
+        .faq-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 24px; transition: 0.3s; }
+        .faq-card:hover { border-color: var(--accent); background: #16161a; }
+        
+        /* Premium Search Box */
+        .premium-search {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 8px 16px;
+            width: 200px;
+            font-size: 12px;
+            color: white;
+            transition: all 0.2s;
+            backdrop-filter: blur(4px);
+        }
+        .premium-search:focus {
+            border-color: var(--accent);
+            outline: none;
+            background: rgba(16, 185, 129, 0.05);
+            width: 240px;
+        }
+        .premium-search::placeholder {
+            color: #52525b;
+            font-weight: 500;
+        }
+        
+        /* Tab styles */
+        .tab-btn {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn-active {
+            color: var(--accent) !important;
+            border-bottom-color: var(--accent) !important;
+        }
+
+        /* Wiki preview cards on homepage */
+        .wiki-preview-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .wiki-preview-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .wiki-preview-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #0a0a0c;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 480px) {
+            .wiki-preview-card img { width: 65px; height: 65px; }
+            .wiki-preview-card h3 { font-size: 0.75rem; }
+        }
+        .wiki-preview-card h3 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 6px 0 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        .wiki-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (min-width: 640px) {
+            .wiki-preview-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .wiki-preview-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        .view-all-btn {
+            display: inline-block;
+            margin-top: 16px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 8px 24px;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .view-all-btn:hover {
+            background: var(--accent);
+            color: black;
+            border-color: var(--accent);
+        }
+        .section-pill {
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 40px;
+            display: inline-block;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .section-pill-common { background: #3f3f46; color: #d4d4d8; }
+        .section-pill-uncommon { background: #2563eb; color: white; }
+        .section-pill-rare { background: #0891b2; color: white; }
+        .section-pill-epic { background: #9333ea; color: white; }
+        .section-pill-legendary { background: #f59e0b; color: black; }
+        .section-pill-mythic { background: #ec489a; color: white; }
+        .section-pill-super { background: #ef4444; color: white; }
+        .section-pill-pack { background: #8b5cf6; color: white; }
+        .section-source {
+            font-size: 8px;
+            color: #71717a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 640px) {
+            .plant-grid { gap: 6px; }
+            .plant-card { padding: 4px 2px; }
+            .plant-name-text { font-size: 8px; }
+            .plant-card .rarity,
+            .plant-card [class*="rarity"] { font-size: 6px !important; padding: 1px 4px !important; }
+            .premium-search { width: 140px; font-size: 10px; }
+            .premium-search:focus { width: 160px; }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header -->
+    <header class="border-b border-white/5 py-6 mb-8">
+    <div class="main-container flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-4">
+            <!-- Logo: auto width based on text, rounded corners -->
+            <div class="bg-emerald-500 rounded-xl flex items-center justify-center font-black text-black px-4 py-2 text-base">
+                GAG2
+            </div>
+            <h1 class="text-xl font-black tracking-tight uppercase">Grow a Garden 2 <span class="text-zinc-500 font-medium text-xs">Calculator</span></h1>
+        </div>
+        <nav class="flex gap-6 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+            <a href="/wiki" class="hover:text-emerald-500 transition">Wiki</a>
+            <a href="./changelog" class="hover:text-emerald-500 transition">Changelog</a>
+            <a href="./contact" class="hover:text-emerald-500 transition">Contact</a>
+            <a href="./privacy" class="hover:text-emerald-500 transition">Privacy</a>
+            <a href="./terms" class="hover:text-emerald-500 transition">Terms</a>
+                <a href="./codes" class="hover:text-emerald-500 transition">Codes</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="main-container">
+        <!-- Warnings Section -->
+        <div class="mb-10 space-y-4">
+            <div class="bg-white/5 border border-white/5 p-4 rounded-2xl text-[11px] text-zinc-400 leading-relaxed">
+                <span class="text-emerald-500 font-bold uppercase mr-2 italic">Disclaimer:</span> 
+                This is a fanmade Grow a Garden 2 calculator and is not officially affiliated with Grow a Garden. Plant values, pet abilities, weights, and trade values will be updated as release discoveries are confirmed.
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-2xl text-xs flex gap-3 items-center">
+                <span class="font-black text-emerald-500 uppercase tracking-tighter">Decay Warning:</span>
+                <span class="text-zinc-300">Water plants before picking or selling. Crops left too long can lose value and color, and watering restores the crop plus connected fruits before harvest.</span>
+            </div>
+        </div>
+
+        <!-- Tabs with fixed onclick handlers -->
+        <div class="flex gap-8 mb-8 border-b border-white/5" id="tab-nav">
+            <button onclick="switchTab('calc')" id="tab-calc" class="tab-btn pb-4 text-xs font-black uppercase tracking-widest border-b-2 border-emerald-500 text-emerald-500 transition-all">Plant Calculator</button>
+            <button onclick="switchTab('growth')" id="tab-growth" class="tab-btn pb-4 text-xs font-black uppercase tracking-widest border-b-2 border-transparent text-zinc-500 transition-all">Plant Growth</button>
+            <button onclick="switchTab('odds')" id="tab-odds" class="tab-btn pb-4 text-xs font-black uppercase tracking-widest border-b-2 border-transparent text-zinc-500 transition-all">Weight Chance</button>
+        </div>
+
+        <!-- Panel 1: Calculator -->
+        <div id="panel-calc" class="tab-panel space-y-12">
+            <div class="grid lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="bg-[#111114] border border-white/5 rounded-3xl p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-[10px] font-black uppercase tracking-widest text-zinc-500">Plant Inventory (5 per row)</h2>
+                            <input type="text" id="plantSearch" placeholder="🔍 Search plants..." class="premium-search">
+                        </div>
+                        <div id="plantGrid" class="plant-grid"></div>
+                        <div class="mt-8 pt-6 border-t border-white/5">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-[10px] font-black uppercase tracking-widest text-zinc-500">Mutations</h2>
+                                <button onclick="clearMutation()" class="text-[9px] font-black text-emerald-500 uppercase">Clear</button>
+                            </div>
+                            <div id="mutationsGrid" class="grid grid-cols-4 gap-2"></div>
+                        </div>
+                    </div>
+                    <div class="bg-[#111114] border border-white/5 rounded-3xl p-6">
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div><label class="text-[10px] font-black text-zinc-500 uppercase block mb-3">Weight (kg)</label><input type="number" id="weightInput" step="0.01" class="text-xl font-black"></div>
+                            <div><label class="text-[10px] font-black text-zinc-500 uppercase block mb-3">Friend Boost: <span id="boostVal" class="text-emerald-500">0%</span></label><input type="range" id="boostInput" min="0" max="70" step="10" class="mt-4 w-full"></div>
+                            <div><label class="text-[10px] font-black text-zinc-500 uppercase block mb-3">Amount</label><input type="number" id="amountInput" min="1" class="text-xl font-black"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-[#111114] border border-white/5 rounded-3xl p-8 sticky top-8">
+                        <div class="flex items-center gap-6 mb-8">
+                            <img id="selectedImg" src="" class="w-20 h-20 rounded-2xl bg-black border border-white/5 object-cover">
+                            <div class="min-w-0 flex-1">
+                                <span id="selectedRarity" class="text-[9px] font-black uppercase tracking-tighter bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded">Rarity</span>
+                                <h2 id="selectedName" class="text-2xl font-black mt-1 uppercase tracking-tighter truncate">Plant Name</h2>
+                                <p id="selectedSource" class="text-[9px] text-zinc-500 font-black uppercase mt-1">Source: Seed Shop</p>
+                            </div>
+                        </div>
+                        <div class="mb-8 flex gap-2">
+                            <button id="decayFreshBtn" class="decay-btn active" onclick="setDecay('fresh')">FRESH<br><span class="text-[9px] font-medium opacity-50">0-40% loss</span></button>
+                            <button id="decayDecayedBtn" class="decay-btn" onclick="setDecay('decayed')">DECAYED<br><span class="text-[9px] font-medium opacity-50">45-80% loss</span></button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-black/40 border border-white/5 p-6 rounded-2xl text-center">
+                                <span class="text-[10px] font-black text-zinc-500 uppercase tracking-widest">Price Estimate</span>
+                                <div id="valueDisplay" class="text-4xl font-black text-emerald-500 mt-1 tracking-tighter">$0</div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-black/20 p-4 rounded-xl border border-white/5 text-center"><span class="text-[9px] font-bold text-zinc-500 uppercase">Bargain Cost</span><div id="bargainCost" class="text-lg font-black text-blue-400 mt-1">$0</div></div>
+                                <div class="bg-black/20 p-4 rounded-xl border border-white/5 text-center"><span class="text-[9px] font-bold text-zinc-500 uppercase">Bargain Resell</span><div id="bargainResell" class="text-lg font-black text-purple-400 mt-1">$0</div></div>
+                            </div>
+                        </div>
+                        <p class="mt-8 text-[11px] text-zinc-500 leading-relaxed italic">Fresh range estimates about 0-40% loss. Water plants before picking or selling, decay can heavily lower the in-game value.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#111114] border border-white/5 rounded-3xl p-8 lg:p-12">
+                <h3 class="text-xl font-black mb-6 uppercase tracking-tight">Understanding Plant Values</h3>
+                <div class="grid md:grid-cols-3 gap-10 text-[13px] text-zinc-400 leading-relaxed">
+                    <div class="space-y-4">
+                        <p class="text-zinc-100 font-black uppercase text-[10px] tracking-widest">Exponential Weight</p>
+                        <p>Grow a Garden 2 uses an exponential formula. As weight increases, the price jump is much larger. High-tier plants like <strong class="text-zinc-200">Mushroom</strong> scale massively with even 1kg of extra weight.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-zinc-100 font-black uppercase text-[10px] tracking-widest">Decay Mechanics</p>
+                        <p>Decay is the biggest enemy of profit. A plant left unwatered or unharvested for too long loses its "Fresh" status, dropping its value by up to 80%.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-zinc-100 font-black uppercase text-[10px] tracking-widest">Stacking Boosts</p>
+                        <p>Maximize sheckles by combining <strong class="text-emerald-500">Mutations</strong> and <strong class="text-emerald-500">Friend Boosts</strong>. A 70% friend boost on a Bloodlit mutation is the meta for top-tier players.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel 2: Growth -->
+        <div id="panel-growth" class="tab-panel hidden space-y-12">
+            <div class="bg-[#111114] border border-white/5 rounded-3xl p-8 lg:p-12">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="text-3xl font-black uppercase mb-8 tracking-tighter">Growth Projection</h2>
+                        <label class="text-[10px] font-black text-zinc-500 uppercase block mb-4">Initial Weight (KG)</label>
+                        <input type="number" id="growthWeight" class="text-6xl font-black bg-transparent border-none p-0 text-emerald-500 focus:ring-0">
+                        <div class="grid grid-cols-2 gap-4 mt-12">
+                            <div class="bg-black/40 p-6 rounded-2xl border border-white/5 text-center"><span class="text-[10px] font-bold text-zinc-500 uppercase">After 1 Hour</span><div id="growth1h" class="text-2xl font-black text-emerald-400 mt-2">0 kg</div></div>
+                            <div class="bg-black/40 p-6 rounded-2xl border border-white/5 text-center"><span class="text-[10px] font-bold text-zinc-500 uppercase">After 12 Hours</span><div id="growth12h" class="text-2xl font-black text-emerald-400 mt-2">0 kg</div></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center"><canvas id="growthChartCanvas"></canvas></div>
+                </div>
+            </div>
+            <div class="bg-[#111114] border border-white/5 rounded-3xl p-8 lg:p-12">
+                <h3 class="text-xl font-black mb-6 uppercase tracking-tight">How Growth Compounds</h3>
+                <p class="text-[13px] text-zinc-400 leading-relaxed">Plants grow by <strong class="text-emerald-500">0.025% per second</strong>. Because it is compounding, the more weight your plant has, the faster it grows. This tool helps you plan your harvest time perfectly to ensure you aren't leaving too many sheckles on the plot.</p>
+            </div>
+        </div>
+
+        <!-- Panel 3: Weight Chance -->
+        <div id="panel-odds" class="tab-panel hidden space-y-12">
+            <div class="bg-[#111114] border border-white/5 rounded-3xl p-8 lg:p-12">
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5 space-y-8">
+                        <h2 class="text-3xl font-black uppercase tracking-tighter">Luck Stats</h2>
+                        <div><label class="text-[10px] font-bold text-zinc-500 uppercase mb-3 block">Target Weight (KG)</label><input type="number" id="targetWeight" class="text-2xl font-black"></div>
+                        <div><label class="text-[10px] font-bold text-zinc-500 uppercase mb-4 block">Sprinkler Loadout</label><div id="sprinklerList" class="space-y-2"></div></div>
+                        <div class="bg-emerald-500/5 p-6 rounded-2xl border border-emerald-500/20 flex justify-between items-center"><span class="text-xs font-black uppercase text-emerald-500/60">Total Size Luck</span><span id="totalLuck" class="text-4xl font-black text-emerald-500">0</span></div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <div class="bg-black/40 p-10 rounded-3xl border border-white/5 text-center mb-8">
+                            <span class="text-xs font-black uppercase text-zinc-500">Probability</span>
+                            <div id="oddsPercentage" class="text-7xl font-black text-emerald-500 my-6 tracking-tighter">0%</div>
+                            <p id="oddsDesc" class="text-[11px] text-zinc-500 font-bold uppercase"></p>
+                        </div>
+                        <div class="overflow-hidden rounded-2xl border border-white/5">
+                            <table class="w-full text-left text-xs"><thead class="bg-white/5 font-black uppercase text-zinc-500"><tr><th class="p-4">Band Type</th><th class="p-4">Range</th><th class="p-4">Chance</th></tr></thead><tbody id="bandTableBody" class="divide-y divide-white/5"></tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- NEW: Wiki Preview Sections (Plants, Pets, Gear)                -->
+        <!-- ============================================================ -->
+
+        <!-- Plants Wiki Preview -->
+        <section class="mt-20 mb-16">
+            <div class="flex justify-between items-end mb-6 flex-wrap gap-2">
+                <div>
+                    <h2 class="text-2xl font-black uppercase tracking-tighter">🌱 Plants</h2>
+                    <p class="text-zinc-400 text-sm">Explore seed values, mutations, and growth details</p>
+                </div>
+                <a href="/wiki/plants/" class="view-all-btn">→ All Plants</a>
+            </div>
+            <div class="wiki-preview-grid">
+                <a href="/wiki/plants/carrot/" class="wiki-preview-card">
+                    <img src="/img/carrot.webp" alt="Carrot" loading="lazy">
+                    <h3>Carrot</h3>
+                    <span class="section-pill section-pill-common">Common</span>
+                    <span class="section-source">Seed Shop</span>
+                </a>
+                <a href="/wiki/plants/strawberry/" class="wiki-preview-card">
+                    <img src="/img/strawberry.webp" alt="Strawberry" loading="lazy">
+                    <h3>Strawberry</h3>
+                    <span class="section-pill section-pill-common">Common</span>
+                    <span class="section-source">Seed Shop</span>
+                </a>
+                <a href="/wiki/plants/blueberry/" class="wiki-preview-card">
+                    <img src="/img/blueberry.webp" alt="Blueberry" loading="lazy">
+                    <h3>Blueberry</h3>
+                    <span class="section-pill section-pill-common">Common</span>
+                    <span class="section-source">Seed Shop</span>
+                </a>
+                <a href="/wiki/plants/tulip/" class="wiki-preview-card">
+                    <img src="/img/tulip.webp" alt="Tulip" loading="lazy">
+                    <h3>Tulip</h3>
+                    <span class="section-pill section-pill-uncommon">Uncommon</span>
+                    <span class="section-source">Seed Shop</span>
+                </a>
+                <a href="/wiki/plants/tomato/" class="wiki-preview-card">
+                    <img src="/img/tomato.webp" alt="Tomato" loading="lazy">
+                    <h3>Tomato</h3>
+                    <span class="section-pill section-pill-uncommon">Uncommon</span>
+                    <span class="section-source">Seed Shop</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Pets Wiki Preview -->
+        <section class="mb-16">
+            <div class="flex justify-between items-end mb-6 flex-wrap gap-2">
+                <div>
+                    <h2 class="text-2xl font-black uppercase tracking-tighter">🐾 Pets</h2>
+                    <p class="text-zinc-400 text-sm">Abilities, sizes, spawn locations, and prices</p>
+                </div>
+                <a href="/wiki/pets/" class="view-all-btn">→ All Pets</a>
+            </div>
+            <div class="wiki-preview-grid">
+                <a href="/wiki/pets/bunny/" class="wiki-preview-card">
+                    <img src="/img/bunny.webp" alt="Bunny" loading="lazy">
+                    <h3>Bunny</h3>
+                    <span class="section-pill section-pill-common">Common</span>
+                    <span class="section-source">Map spawn</span>
+                </a>
+                <a href="/wiki/pets/frog/" class="wiki-preview-card">
+                    <img src="/img/frog.webp" alt="Frog" loading="lazy">
+                    <h3>Frog</h3>
+                    <span class="section-pill section-pill-common">Common</span>
+                    <span class="section-source">Map spawn</span>
+                </a>
+                <a href="/wiki/pets/owl/" class="wiki-preview-card">
+                    <img src="/img/owl.webp" alt="Owl" loading="lazy">
+                    <h3>Owl</h3>
+                    <span class="section-pill section-pill-uncommon">Uncommon</span>
+                    <span class="section-source">Map spawn</span>
+                </a>
+                <a href="/wiki/pets/deer/" class="wiki-preview-card">
+                    <img src="/img/deer.webp" alt="Deer" loading="lazy">
+                    <h3>Deer</h3>
+                    <span class="section-pill section-pill-rare">Rare</span>
+                    <span class="section-source">Map spawn</span>
+                </a>
+                <a href="/wiki/pets/robin/" class="wiki-preview-card">
+                    <img src="/img/robin.webp" alt="Robin" loading="lazy">
+                    <h3>Robin</h3>
+                    <span class="section-pill section-pill-legendary">Legendary</span>
+                    <span class="section-source">Map spawn</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Gear Wiki Preview -->
+        <section class="mb-16">
+            <div class="flex justify-between items-end mb-6 flex-wrap gap-2">
+                <div>
+                    <h2 class="text-2xl font-black uppercase tracking-tighter">🛠️ Gear</h2>
+                    <p class="text-zinc-400 text-sm">Watering cans, sprinklers, mushrooms, tools, and more</p>
+                </div>
+                <a href="/wiki/gear/" class="view-all-btn">→ All Gear</a>
+            </div>
+            <div class="wiki-preview-grid">
+                <a href="/wiki/gear/commonwateringcan/" class="wiki-preview-card">
+                    <img src="/img/commonwateringcan.webp" alt="Common Watering Can" loading="lazy">
+                    <h3>Common Watering Can</h3>
+                    <span class="section-pill section-pill-common">Common</span>
+                    <span class="section-source">Gear Shop</span>
+                </a>
+                <a href="/wiki/gear/commonsprinkler/" class="wiki-preview-card">
+                    <img src="/img/commonsprinkler.webp" alt="Common Sprinkler" loading="lazy">
+                    <h3>Common Sprinkler</h3>
+                    <span class="section-pill section-pill-common">Common</span>
+                    <span class="section-source">Gear Shop</span>
+                </a>
+                <a href="/wiki/gear/uncommonsprinkler/" class="wiki-preview-card">
+                    <img src="/img/uncommonsprinkler.webp" alt="Uncommon Sprinkler" loading="lazy">
+                    <h3>Uncommon Sprinkler</h3>
+                    <span class="section-pill section-pill-uncommon">Uncommon</span>
+                    <span class="section-source">Gear Shop</span>
+                </a>
+                <a href="/wiki/gear/trowel/" class="wiki-preview-card">
+                    <img src="/img/trowel.webp" alt="Trowel" loading="lazy">
+                    <h3>Trowel</h3>
+                    <span class="section-pill section-pill-rare">Rare</span>
+                    <span class="section-source">Gear Shop</span>
+                </a>
+                <a href="/wiki/gear/raresprinkler/" class="wiki-preview-card">
+                    <img src="/img/raresprinkler.webp" alt="Rare Sprinkler" loading="lazy">
+                    <h3>Rare Sprinkler</h3>
+                    <span class="section-pill section-pill-rare">Rare</span>
+                    <span class="section-source">Gear Shop</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Existing FAQ Section -->
+        <section class="mt-16 mb-20">
+            <h2 class="text-4xl font-black text-center mb-16 uppercase tracking-tighter">Frequently Asked Questions</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="faq-card">
+                    <h4 class="text-emerald-500 font-black uppercase text-[11px] mb-3 tracking-widest">How to calculate plant value?</h4>
+                    <p class="text-sm text-zinc-400">Select the plant, mutation, and enter the weight. Our calculator uses game-confirmed exponential formulas to give you the most accurate range.</p>
+                </div>
+                <div class="faq-card">
+                    <h4 class="text-emerald-500 font-black uppercase text-[11px] mb-3 tracking-widest">Why is my plant value low?</h4>
+                    <p class="text-sm text-zinc-400">If your plant is "Decayed", it loses 45-80% value. Always water before picking to restore the crop to "Fresh" status.</p>
+                </div>
+                <div class="faq-card">
+                    <h4 class="text-emerald-500 font-black uppercase text-[11px] mb-3 tracking-widest">What are Band 2 & 3 rolls?</h4>
+                    <p class="text-sm text-zinc-400">Bands are rare weight tiers. Band 1 is common, while Band 3 is ultra-rare, giving you a massive starting weight without doubles.</p>
+                </div>
+                <div class="faq-card">
+                    <h4 class="text-emerald-500 font-black uppercase text-[11px] mb-3 tracking-widest">What is the luck cap?</h4>
+                    <p class="text-sm text-zinc-400">Size luck from Sprinklers is capped at 100. Adding more sprinklers beyond this will not increase your doubling chance.</p>
+                </div>
+                <div class="faq-card">
+                    <h4 class="text-emerald-500 font-black uppercase text-[11px] mb-3 tracking-widest">Best plant for sheckles?</h4>
+                    <p class="text-sm text-zinc-400">High-tier plants like Mushroom, Dragon's Breath, and Moon Bloom are the best earners due to their high base value and exponents.</p>
+                </div>
+                <div class="faq-card">
+                    <h4 class="text-emerald-500 font-black uppercase text-[11px] mb-3 tracking-widest">Does friend boost stack?</h4>
+                    <p class="text-sm text-zinc-400">Yes, standing near players gives you up to 70% extra value. This boost is added after mutation multipliers.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/5 py-16 text-center">
+        <div class="main-container">
+            <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-8">
+                <a href="/" class="hover:text-emerald-500">Main Calculator</a>
+                <a href="/wiki" class="hover:text-emerald-500">Wiki</a>
+                <a href="/changelog" class="hover:text-emerald-500">Changelog</a>
+                <a href="/contact" class="hover:text-emerald-500">Contact</a>
+                <a href="/privacy" class="hover:text-emerald-500">Privacy</a>
+                <a href="/terms" class="hover:text-emerald-500">Terms</a>
+            </div>
+            <p class="text-[9px] text-zinc-700 font-black uppercase tracking-[0.4em]">Made by Awesomedu &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Switch tab function - fixes the persistent highlight issue
+        function switchTab(tabId) {
+            // Hide all panels
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            // Show selected panel
+            const activePanel = document.getElementById('panel-' + tabId);
+            if (activePanel) activePanel.classList.remove('hidden');
+            
+            // Update tab button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-emerald-500', 'border-emerald-500');
+                btn.classList.add('text-zinc-500', 'border-transparent');
+            });
+            const activeButton = document.getElementById('tab-' + tabId);
+            if (activeButton) {
+                activeButton.classList.remove('text-zinc-500', 'border-transparent');
+                activeButton.classList.add('text-emerald-500', 'border-emerald-500');
+            }
+            
+            // Trigger any dynamic updates if needed
+            if (tabId === 'growth' && typeof updateGrowth === 'function') updateGrowth();
+            if (tabId === 'odds' && typeof updateOdds === 'function') updateOdds();
+        }
+
+        // Ensure that rarity classes are added correctly for background colors
+        // This will observe dynamically added plant cards and add appropriate rarity class
+        const rarityObserver = new MutationObserver(() => {
+            document.querySelectorAll('#plantGrid .plant-card').forEach(card => {
+                const raritySpan = card.querySelector('.rarity, .rarity-badge, [class*="rarity"]');
+                if (raritySpan) {
+                    const rarityText = raritySpan.innerText.toLowerCase();
+                    if (rarityText.includes('common')) raritySpan.classList.add('common');
+                    else if (rarityText.includes('rare')) raritySpan.classList.add('rare');
+                    else if (rarityText.includes('epic')) raritySpan.classList.add('epic');
+                    else if (rarityText.includes('legendary')) raritySpan.classList.add('legendary');
+                }
+            });
+        });
+        const plantGrid = document.getElementById('plantGrid');
+        if (plantGrid) rarityObserver.observe(plantGrid, { childList: true, subtree: true });
+
+        // Plant name class fix
+        const nameObserver = new MutationObserver(() => {
+            document.querySelectorAll('#plantGrid .plant-name').forEach(el => {
+                el.classList.add('plant-name-text');
+            });
+        });
+        if (plantGrid) nameObserver.observe(plantGrid, { childList: true, subtree: true });
+
+        // Boost input display
+        const boostInput = document.getElementById('boostInput');
+        const boostVal = document.getElementById('boostVal');
+        if (boostInput && boostVal) {
+            boostInput.addEventListener('input', () => { boostVal.innerText = boostInput.value + '%'; });
+        }
+        
+        // Ensure initial tab is correct (calc)
+        // But if URL hash or something, default to calc
+        switchTab('calc');
+    </script>
+    <script src="gag2.js"></script>
+</body>
+</html>

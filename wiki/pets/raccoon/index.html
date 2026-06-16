@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Raccoon Value, Price & Ability | Grow a Garden 2 Wiki</title>
+    <link rel="canonical" href="https://gag2.inficalc.com/wiki/pets/raccoon/" />
+    <meta name="description" content="Raccoon pet guide for Grow a Garden 2 with ability, rarity, map-spawn obtainment, size variants, and price notes. Price: 15M.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070708;
+            --card: #111114;
+            --accent: #10b981;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+        * { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: #ececed; margin: 0; padding: 0; }
+        
+        .main-container { max-width: 100%; padding: 0 16px; }
+        @media (min-width: 1280px) { .main-container { max-width: 1200px; margin: 0 auto; } }
+        
+        .wiki-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: 0.2s;
+            padding: 24px;
+        }
+        .wiki-card:hover { border-color: var(--accent); }
+        
+        .infobox {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+        .infobox img {
+            width: 100%;
+            max-width: 160px;
+            border-radius: 16px;
+            margin: 0 auto 16px;
+            display: block;
+            background: #0a0a0c;
+        }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+        .data-row span { color: #71717a; font-weight: 600; }
+        .data-row strong { color: var(--accent); }
+        
+        .pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .pill-common { background: #3f3f46; color: #d4d4d8; }
+        .pill-uncommon { background: #2563eb; color: white; }
+        .pill-rare { background: #0891b2; color: white; }
+        .pill-epic { background: #9333ea; color: white; }
+        .pill-legendary { background: #f59e0b; color: black; }
+        .pill-mythic { background: #ec489a; color: white; }
+        .pill-super { background: #ef4444; color: white; }
+        .pill-pack { background: #8b5cf6; color: white; }
+        
+        .value-snapshot {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .value-stat {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+        }
+        .value-stat span {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #71717a;
+            display: block;
+        }
+        .value-stat strong {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-top: 4px;
+            display: block;
+        }
+        
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .size-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+        }
+        .size-card h3 {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .size-card p {
+            font-size: 13px;
+            color: #d4d4d8;
+            margin-top: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .value-snapshot { grid-template-columns: 1fr 1fr; }
+            .size-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="border-b border-white/5 py-5 mb-8">
+        <div class="main-container flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500 rounded-xl flex items-center justify-center font-black text-black px-4 py-2 text-base">GAG2</div>
+                <h1 class="text-xl font-black tracking-tight uppercase">Grow a Garden 2 <span class="text-zinc-500 font-medium text-xs">Pet Wiki</span></h1>
+            </div>
+            <nav class="flex gap-5 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                <a href="../../../" class="hover:text-emerald-500">Calculator</a>
+                <a href="../../" class="hover:text-emerald-500">Wiki Home</a>
+                <a href="../" class="hover:text-emerald-500">Pets</a>
+                <a href="../../plants/" class="hover:text-emerald-500">Plants</a>
+                <a href="../../gear/" class="hover:text-emerald-500">Gear</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500">Changelog</a>
+                <a href="../../../codes" class="hover:text-emerald-500 transition">Codes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Breadcrumbs -->
+        <div class="text-[10px] font-black uppercase tracking-wider text-zinc-500 mb-6">
+            <a href="../../" class="hover:text-emerald-500">Wiki</a> <span class="mx-1">/</span>
+            <a href="../" class="hover:text-emerald-500">Pets</a> <span class="mx-1">/</span>
+            <span class="text-emerald-500">Raccoon</span>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Hero -->
+                <div class="wiki-card">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="pill pill-super">Pet</span>
+                        <span class="pill pill-super">Super</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">Raccoon</h1>
+                    <p class="text-zinc-400 text-sm">Raccoon pet guide for Grow a Garden 2 with ability, rarity, map-spawn obtainment, size variants, and price notes. Price: 15M.</p>
+                </div>
+
+                <!-- Overview -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">Overview</h2>
+                    <p class="text-zinc-300 text-sm">Raccoon is a pet entry on the Grow a Garden 2 Wiki.</p>
+                </div>
+
+                <!-- When It Was Obtainable -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">When It Was Obtainable</h2>
+                    <p class="text-zinc-300 text-sm">Raccoon availability: Release. This page will be updated if the source rotates out or changes.</p>
+                </div>
+
+                <!-- How To Get Raccoon -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">How To Get Raccoon</h2>
+                    <p class="text-zinc-300 text-sm">Randomly appears on the map. Walk up to it and buy it for 15M.</p>
+                </div>
+
+                <!-- What Raccoon Does -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">What Raccoon Does</h2>
+                    <p class="text-zinc-300 text-sm">Sneaks out at night to steal fruit from empty gardens and raises your steal limit by <strong class="text-emerald-500">+25</strong>.</p>
+                </div>
+
+                <!-- Price Snapshot -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Price Snapshot</h2>
+                    <div class="value-snapshot">
+                        <div class="value-stat"><span>Base price</span><strong>15M</strong></div>
+                        <div class="value-stat"><span>Big price</span><strong>30M</strong></div>
+                        <div class="value-stat"><span>Rarity</span><strong>Super</strong></div>
+                        <div class="value-stat"><span>Source</span><strong>Map pet spawn</strong></div>
+                    </div>
+                </div>
+
+                <!-- Size Variants -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Size Variants</h2>
+                    <div class="size-grid">
+                        <div class="size-card">
+                            <h3>Normal Raccoon</h3>
+                            <p>Steal limit <strong class="text-emerald-500">+25</strong></p>
+                            <p class="text-xs text-zinc-500">Base size</p>
+                        </div>
+                        <div class="size-card">
+                            <h3>Big Raccoon</h3>
+                            <p>Steal limit <strong class="text-emerald-500">+50</strong></p>
+                            <p class="text-xs text-zinc-500">Double the boost</p>
+                        </div>
+                        <div class="size-card">
+                            <h3>Huge Raccoon</h3>
+                            <p>Steal limit <strong class="text-emerald-500">+75</strong></p>
+                            <p class="text-xs text-zinc-500">Expected value</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Value History -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Value History</h2>
+                    <div class="border-l-2 border-emerald-500 pl-4">
+                        <time class="text-emerald-500 text-xs font-black">June 14, 2026</time>
+                        <p class="font-bold text-sm mt-1">Current price</p>
+                        <ul class="list-disc list-inside text-sm text-zinc-300 mt-1">
+                            <li>Base price: 15M</li>
+                            <li>Big Raccoon price: 30M</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Detailed Notes -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">Detailed Notes</h2>
+                    <p class="text-zinc-300 text-sm">Raccoon is a Super pet that spawns randomly on the map. It sneaks out at night to steal fruit from empty gardens and raises your steal limit. Big Raccoon provides a +50 steal limit boost, and Huge Raccoon is expected to provide +75.</p>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex gap-4 flex-wrap">
+                    <a href="../../../" class="bg-emerald-500 text-black font-black px-6 py-2 rounded-xl text-sm uppercase tracking-wider hover:bg-emerald-400 transition">Open Calculator</a>
+                    <a href="../" class="border border-white/10 text-zinc-300 font-black px-6 py-2 rounded-xl text-sm uppercase tracking-wider hover:border-emerald-500 transition">All Pets</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Infobox -->
+            <aside class="space-y-6">
+                <div class="infobox">
+                    <img src="../../../img/raccoon.webp" alt="Raccoon" class="mx-auto" loading="lazy">
+                    <h2 class="text-xl font-black text-center mt-2">Raccoon</h2>
+                    <div class="mt-4">
+                        <div class="data-row"><span>Type</span><strong>Pet</strong></div>
+                        <div class="data-row"><span>Source</span><strong>Map pet spawn</strong></div>
+                        <div class="data-row"><span>Rarity</span><strong>Super</strong></div>
+                        <div class="data-row"><span>Availability</span><strong>Release</strong></div>
+                        <div class="data-row"><span>Price</span><strong>15M</strong></div>
+                        <div class="data-row"><span>Big price</span><strong>30M</strong></div>
+                    </div>
+                </div>
+                
+                <!-- Simulated ad slot -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center text-[10px] text-zinc-500">
+                    📢 Advertisement
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 text-center mt-12">
+        <div class="main-container">
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-6">
+                <a href="../../../" class="hover:text-emerald-500">Calculator</a>
+                <a href="../../" class="hover:text-emerald-500">Wiki Home</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500">Changelog</a>
+                <a href="../../../contact/" class="hover:text-emerald-500">Contact</a>
+                <a href="../../../privacy-policy/" class="hover:text-emerald-500">Privacy</a>
+                <a href="../../../terms-of-service/" class="hover:text-emerald-500">Terms</a>
+            </div>
+            <p class="text-[8px] text-zinc-700 font-black uppercase tracking-[0.4em]">Made by maxwidgets &copy; 2024 — Fan content, not official</p>
+        </div>
+    </footer>
+</body>
+</html>

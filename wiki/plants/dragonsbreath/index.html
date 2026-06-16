@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Dragon's Breath Value, Seed & Weight | Grow a Garden 2 Wiki</title>
+    <link rel="canonical" href="https://gag2.inficalc.com/wiki/plants/dragonsbreath/" />
+    <meta name="description" content="Dragon's Breath plant guide for Grow a Garden 2 with source, rarity, seed obtainment, weight notes, value datapoints, and calculator links. Seed price: 90M. Lowest tracked fruit value: 3.1K.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070708;
+            --card: #111114;
+            --accent: #10b981;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+        * { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: #ececed; margin: 0; padding: 0; }
+        
+        .main-container { max-width: 100%; padding: 0 16px; }
+        @media (min-width: 1280px) { .main-container { max-width: 1200px; margin: 0 auto; } }
+        
+        .wiki-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: 0.2s;
+            padding: 24px;
+        }
+        .wiki-card:hover { border-color: var(--accent); }
+        
+        .infobox {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            position: sticky;
+            top: 20px;
+        }
+        .infobox img {
+            width: 100%;
+            max-width: 160px;
+            border-radius: 16px;
+            margin: 0 auto 16px;
+            display: block;
+            background: #0a0a0c;
+        }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+        .data-row span { color: #71717a; font-weight: 600; }
+        .data-row strong { color: var(--accent); }
+        
+        .pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .pill-common { background: #3f3f46; color: #d4d4d8; }
+        .pill-uncommon { background: #2563eb; color: white; }
+        .pill-rare { background: #0891b2; color: white; }
+        .pill-epic { background: #9333ea; color: white; }
+        .pill-legendary { background: #f59e0b; color: black; }
+        .pill-mythic { background: #ec489a; color: white; }
+        .pill-super { background: #ef4444; color: white; }
+        .pill-pack { background: #8b5cf6; color: white; }
+        
+        .value-snapshot {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        .value-stat {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+        }
+        .value-stat span {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #71717a;
+            display: block;
+        }
+        .value-stat strong {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-top: 4px;
+            display: block;
+        }
+        
+        .lucky-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .lucky-table th, .lucky-table td {
+            padding: 10px 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .lucky-table th {
+            color: #71717a;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+        
+        .datapoint-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        @media (max-width: 768px) {
+            .value-snapshot { grid-template-columns: 1fr 1fr; }
+            .lucky-table { font-size: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="border-b border-white/5 py-5 mb-8">
+        <div class="main-container flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500 rounded-xl flex items-center justify-center font-black text-black px-4 py-2 text-base">GAG2</div>
+                <h1 class="text-xl font-black tracking-tight uppercase">Grow a Garden 2 <span class="text-zinc-500 font-medium text-xs">Plant Wiki</span></h1>
+            </div>
+            <nav class="flex gap-5 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                <a href="../../../" class="hover:text-emerald-500">Calculator</a>
+                <a href="../../" class="hover:text-emerald-500">Wiki Home</a>
+                <a href="../" class="hover:text-emerald-500">Plants</a>
+                <a href="../../pets/" class="hover:text-emerald-500">Pets</a>
+                <a href="../../gear/" class="hover:text-emerald-500">Gear</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500">Changelog</a>
+                <a href="../../../codes" class="hover:text-emerald-500 transition">Codes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Breadcrumbs -->
+        <div class="text-[10px] font-black uppercase tracking-wider text-zinc-500 mb-6">
+            <a href="../../" class="hover:text-emerald-500">Wiki</a> <span class="mx-1">/</span>
+            <a href="../" class="hover:text-emerald-500">Plants</a> <span class="mx-1">/</span>
+            <span class="text-emerald-500">Dragon's Breath</span>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Main content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Hero -->
+                <div class="wiki-card">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="pill pill-super">Plant</span>
+                        <span class="pill pill-super">Super</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">Dragon's Breath</h1>
+                    <p class="text-zinc-400 text-sm">Dragon's Breath plant guide for Grow a Garden 2 with source, rarity, seed obtainment, weight notes, value datapoints, and calculator links. Seed price: 90M. Lowest tracked fruit value: 3.1K.</p>
+                </div>
+
+                <!-- Overview -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">Overview</h2>
+                    <p class="text-zinc-300 text-sm">Dragon's Breath is a plant entry on the Grow a Garden 2 Wiki.</p>
+                </div>
+
+                <!-- When It Was Obtainable -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">When It Was Obtainable</h2>
+                    <p class="text-zinc-300 text-sm">Dragon's Breath availability: Release. This page will be updated if the source rotates out or changes.</p>
+                </div>
+
+                <!-- How To Get Dragon's Breath -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">How To Get Dragon's Breath</h2>
+                    <p class="text-zinc-300 text-sm">Buy the seed from the Seed Shop when it appears.</p>
+                </div>
+
+                <!-- What Dragon's Breath Does (special ability) -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">What Dragon's Breath Does</h2>
+                    <p class="text-zinc-300 text-sm">Attacks players who try to steal from your base.</p>
+                </div>
+
+                <!-- Seed Value Snapshot -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Seed Value Snapshot</h2>
+                    <div class="value-snapshot">
+                        <div class="value-stat"><span>Seed price</span><strong>90M</strong></div>
+                        <div class="value-stat"><span>Average fruit value</span><strong>3.4K</strong></div>
+                        <div class="value-stat"><span>Lowest fruit value</span><strong>3.1K</strong></div>
+                        <div class="value-stat"><span>Harvest style</span><strong>Repeat harvest</strong></div>
+                        <div class="value-stat"><span>Value samples</span><strong>4 normal sell-value datapoints</strong></div>
+                    </div>
+                    <p class="text-xs text-zinc-500">Repeat-harvest seed: the first fruit is only part of the value, because one planted seed can keep producing more harvests.</p>
+                </div>
+
+                <!-- Weight Potential -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Weight Potential</h2>
+                    <div class="value-snapshot">
+                        <div class="value-stat"><span>Base Weight</span><strong>7.50kg</strong></div>
+                        <div class="value-stat"><span>Observed min</span><strong>8.92kg</strong></div>
+                        <div class="value-stat"><span>Observed avg</span><strong>9.90kg</strong></div>
+                        <div class="value-stat"><span>Observed max</span><strong>11.0kg</strong></div>
+                    </div>
+                    <p class="text-xs text-zinc-500">This table uses confirmed weight screenshots as the practical range. Very rare lucky-size chains are shown separately below.</p>
+                </div>
+
+                <!-- Lucky Double Odds -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Lucky Double Odds</h2>
+                    <p class="text-xs text-zinc-400 mb-4">These odds use the high-luck 5% double chance; lower luck makes chains rarer. Each lucky double has to roll again, so the odds shrink fast. The table shows examples from this plant's lowest clean weight and from its observed high.</p>
+                    <div class="overflow-x-auto">
+                        <table class="lucky-table w-full">
+                            <thead>
+                                <tr><th>Consecutive doubles</th><th>Multiplier</th><th>Chance</th><th>From 8.92kg</th><th>From 11.0kg</th><th>Odds</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</span></span></span></td><td>x2</span></span></span></td><td>5%</span></span></span><td>17.8kg</span></span></span><td>22.1kg</span></span></span><td>1 in 20</span></span></span></tr>
+                                <tr><td>2</span></span></span></td><td>x4</span></span></span></td><td>0.25%</span></span></span><td>35.7kg</span></span></span><td>44.2kg</span></span></span><td>1 in 400</span></span></span></tr>
+                                <tr><td>3</span></span></span></td><td>x8</span></span></span></td><td>0.0125%</span></span></span><td>71.4kg</span></span></span><td>88.3kg</span></span></span><td>1 in 8,000</span></span></span></tr>
+                                <tr><td>4</span></span></span></td><td>x16</span></span></span></td><td>0.000625%</span></span></span><td>143kg</span></span></span><td>177kg</span></span></span><td>1 in 160,000</span></span></span></tr>
+                                <tr><td>5</span></span></span></td><td>x32</span></span></span></td><td>0.00003125%</span></span></span><td>285kg</span></span></span><td>353kg</span></span></span><td>1 in 3.2 million</span></span></span></tr>
+                                <tr><td>6</span></span></span></td><td>x64</span></span></span></td><td>0.0000015625%</span></span></span><td>571kg</span></span></span><td>707kg</span></span></span><td>1 in 64 million</span></span></span></tr>
+                                <tr><td>7</span></span></span></td><td>x128</span></span></span></td><td>0.000000078125%</span></span></span><td>1,142kg</span></span></span><td>1,413kg</span></span></span><td>1 in 1.28 billion</span></span></span></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Value Datapoints -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Value Datapoints</h2>
+                    <ul class="datapoint-list">
+                        <li><span>8.92kg → 6.35k</span><strong class="text-emerald-500">datapoint</strong></li>
+                        <li><span>9.16kg → 6.81k</span><strong class="text-emerald-500">datapoint</strong></li>
+                        <li><span>10.46kg → 9.83k</span><strong class="text-emerald-500">datapoint</strong></li>
+                        <li><span>11.04kg → 11.09k</span><strong class="text-emerald-500">datapoint</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Value Estimate -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">Value Estimate</h2>
+                    <p class="text-zinc-300 text-sm">Use the <a href="../../../" class="text-emerald-500 hover:underline">calculator</a> for the latest estimate. It uses the active value model and will update as cleaner weights are added.</p>
+                </div>
+
+                <!-- Value History -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-4">Value History</h2>
+                    <div class="border-l-2 border-emerald-500 pl-4">
+                        <time class="text-emerald-500 text-xs font-black">June 14, 2026</time>
+                        <p class="font-bold text-sm mt-1">Current value examples</p>
+                        <ul class="list-disc list-inside text-sm text-zinc-300 mt-1">
+                            <li>~9.5kg: 8.92kg → 6.35k, 9.16kg → 6.81k, 10.46kg → 9.83k</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Detailed Notes -->
+                <div class="wiki-card">
+                    <h2 class="text-lg font-black uppercase tracking-tight mb-3">Detailed Notes</h2>
+                    <p class="text-zinc-300 text-sm">The calculator estimate uses player-provided sell-value datapoints and will update as more samples are added. Plants can keep gaining small amounts of weight after they look fully grown, though the exact rate still needs controlled timing tests. Seed Shop screenshots show source and rarity; listed prices are shown when available.</p>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex gap-4 flex-wrap">
+                    <a href="../../../" class="bg-emerald-500 text-black font-black px-6 py-2 rounded-xl text-sm uppercase tracking-wider hover:bg-emerald-400 transition">Open Calculator</a>
+                    <a href="../" class="border border-white/10 text-zinc-300 font-black px-6 py-2 rounded-xl text-sm uppercase tracking-wider hover:border-emerald-500 transition">All Plants</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Infobox -->
+            <aside class="space-y-6">
+                <div class="infobox">
+                    <img src="../../../img/dragonsbreath.webp" alt="Dragon's Breath" class="mx-auto" loading="lazy">
+                    <h2 class="text-xl font-black text-center mt-2">Dragon's Breath</h2>
+                    <div class="mt-4">
+                        <div class="data-row"><span>Type</span><strong>Plant</strong></div>
+                        <div class="data-row"><span>Source</span><strong>Seed Shop</strong></div>
+                        <div class="data-row"><span>Rarity</span><strong>Super</strong></div>
+                        <div class="data-row"><span>Availability</span><strong>Release</strong></div>
+                        <div class="data-row"><span>Stock</span><strong>Seen x1</strong></div>
+                        <div class="data-row"><span>Price</span><strong>90M</strong></div>
+                        <div class="data-row"><span>Samples</span><strong>4 normal</strong></div>
+                    </div>
+                </div>
+                
+                <!-- Simulated ad slot -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center text-[10px] text-zinc-500">
+                    📢 Advertisement
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 text-center mt-12">
+        <div class="main-container">
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-6">
+                <a href="../../../" class="hover:text-emerald-500">Calculator</a>
+                <a href="../../" class="hover:text-emerald-500">Wiki Home</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500">Changelog</a>
+                <a href="../../../contact/" class="hover:text-emerald-500">Contact</a>
+                <a href="../../../privacy-policy/" class="hover:text-emerald-500">Privacy</a>
+                <a href="../../../terms-of-service/" class="hover:text-emerald-500">Terms</a>
+            </div>
+            <p class="text-[8px] text-zinc-700 font-black uppercase tracking-[0.4em]">Made by maxwidgets &copy; 2024 — Fan content, not official</p>
+        </div>
+    </footer>
+</body>
+</html>

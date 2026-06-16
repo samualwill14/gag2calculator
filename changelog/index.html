@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grow a Garden 2 | Changelog</title>
+    <link rel="canonical" href="https://gag2.inficalc.com/changelog/" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070708;
+            --card: #111114;
+            --accent: #10b981;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+        * { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: #ececed; margin: 0; padding: 0; }
+        
+        .main-container {
+            max-width: 100%;
+            padding: 0 16px;
+        }
+        @media (min-width: 1280px) {
+            .main-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+        }
+        
+        .changelog-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 32px;
+            transition: 0.2s;
+            margin-bottom: 24px;
+        }
+        .changelog-card:hover {
+            border-color: var(--accent);
+        }
+        .date-badge {
+            background: rgba(16,185,129,0.15);
+            border: 1px solid rgba(16,185,129,0.3);
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--accent);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .changelog-category {
+            font-weight: 800;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #71717a;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--accent);
+            padding-left: 12px;
+        }
+        .changelog-entry {
+            margin-bottom: 8px;
+            margin-left: 16px;
+            font-size: 14px;
+            color: #d4d4d8;
+            line-height: 1.5;
+        }
+        .changelog-entry::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 16px;
+            margin-left: -16px;
+        }
+        .sub-entry {
+            margin-left: 32px;
+            font-size: 13px;
+            color: #a1a1aa;
+        }
+        hr {
+            border-color: var(--border);
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header (same as main site) -->
+    <header class="border-b border-white/5 py-6 mb-8">
+        <div class="main-container flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="bg-emerald-500 rounded-xl flex items-center justify-center font-black text-black px-4 py-2 text-base">
+                    GAG2
+                </div>
+                <h1 class="text-xl font-black tracking-tight uppercase">Grow a Garden 2 <span class="text-zinc-500 font-medium text-xs">Changelog</span></h1>
+            </div>
+            <nav class="flex gap-6 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                <a href="/" class="hover:text-emerald-500 transition">Calculator</a>
+                <a href="/wiki" class="hover:text-emerald-500 transition">Wiki</a>
+                <a href="/changelog" class="text-emerald-500 transition">Changelog</a>
+                <a href="/contact" class="hover:text-emerald-500 transition">Contact</a>
+                <a href="/privacy" class="hover:text-emerald-500 transition">Privacy</a>
+                <a href="/terms" class="hover:text-emerald-500 transition">Terms</a>
+                <a href="../codes" class="hover:text-emerald-500 transition">Codes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="max-w-4xl mx-auto my-12">
+            <div class="text-center mb-8">
+                <div class="inline-block bg-emerald-500/10 text-emerald-500 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4">What's New</div>
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">Release Notes</h2>
+                <p class="text-zinc-400 text-sm">Clean changelog for the Grow a Garden 2 calculator, wiki, and tools.</p>
+            </div>
+
+            <!-- June 14, 2026 -->
+            <div class="changelog-card">
+                <div class="date-badge">📅 June 14, 2026</div>
+                <div class="changelog-category">Harvest-Aware & Sprinkler Update</div>
+                <div class="changelog-entry">Calculator logic</div>
+                <div class="changelog-entry">Mutations: Updated Frozen calculator handling by plant harvest type.</div>
+                <div class="changelog-entry">Mutations: Updated Electric calculator handling by plant harvest type.</div>
+                <div class="changelog-entry">Data: Single-harvest tracking now covers Carrot, Tulip, Bamboo, Mushroom, and Glow Mushroom for future mutation testing.</div>
+                <div class="changelog-entry">Gear: Updated sprinkler pages with growth speed, size luck, 2-minute duration, radius, and stacking notes.</div>
+                <div class="changelog-entry">Gear: Updated Watering Can pages with growth speed, splash radius, duration, and fruit decay cleanup notes.</div>
+                <div class="changelog-entry">Systems: Added a Sprinkler Double Chance page for size luck, capped luck setups, and consecutive double examples.</div>
+            </div>
+
+            <!-- June 13, 2026 -->
+            <div class="changelog-card">
+                <div class="date-badge">📅 June 13, 2026</div>
+                <div class="changelog-category">Pet And Plant Datapoint Update — Live data</div>
+                
+                <div class="changelog-category">Plants</div>
+                <div class="changelog-entry">Added Moon Bloom sell-value datapoint: 15.21kg -> 46.24k.</div>
+                <div class="changelog-entry">Added Moon Bloom Frozen datapoint: 17.08kg Frozen -> 688.14k, kept as a mutation recheck.</div>
+                <div class="changelog-entry">Added Banana sell-value datapoint: 5.47kg -> 887 and updated Banana value estimates from 3 datapoints.</div>
+                <div class="changelog-entry">Added Mushroom sell-value datapoint: 8.23kg -> 27.4k.</div>
+                <div class="changelog-entry">Archived the older Cherry datapoint 3.02kg -> 1.15k after newer values showed a balance change.</div>
+                <div class="changelog-entry">Updated Cherry's active estimate with 7 current normal datapoints and kept Electric sales as mutation rechecks.</div>
+                <div class="changelog-entry">Added Electric Cherry datapoints: 1.65kg -> 21.4k, 1.65kg -> 21.57k, and 2.05kg -> 37.78k.</div>
+                <div class="changelog-entry">Added Dragon Fruit sell-value datapoints: 4.85kg -> 498 and 9.13kg -> 3.68k.</div>
+                <div class="changelog-entry">Added 7 more Dragon Fruit datapoints and updated Dragon Fruit value estimates.</div>
+                <div class="changelog-entry">Added Grape sell-value datapoints from 3 datapoints: 2.41kg -> 70, 3.01kg -> 130, and 10.51kg -> 3.59k.</div>
+                <div class="changelog-entry">Added Sunflower sell-value datapoint: 8.91kg -> 5.34k.</div>
+                <div class="changelog-entry">Added Venus Fly Trap sell-value datapoint: 4.86kg -> 10,728.</div>
+                <div class="changelog-entry">Added Venus Fly Trap sell-value datapoint: 3.80kg -> 5,527 and updated Venus Fly Trap value estimates from 2 datapoints.</div>
+                <div class="changelog-entry">Added 6 Coconut sell-value datapoints and updated Coconut value estimates.</div>
+                <div class="changelog-entry">Added 5 newer Bamboo datapoints and updated Bamboo to the newer value curve.</div>
+                <div class="changelog-entry">Added Bamboo 30.31kg -> 17.82k and updated Bamboo value estimates.</div>
+                <div class="changelog-entry">Added Mango sell-value samples: 5.86kg -> 530 and 5.91kg -> 541.</div>
+                <div class="changelog-entry">Added Mango decay-check samples: 4.18kg -> 212, 4.39kg -> 238, and 4.67kg -> 279.</div>
+                <div class="changelog-entry">Added Apple decay-check samples showing 2.37kg darker Apple -> 26 below a fresher 2.20kg Apple -> 27.</div>
+                <div class="changelog-entry">Added 8.24kg Rainbow Cactus -> 97.54k and updated Cactus with a Rainbow mutation check.</div>
+                <div class="changelog-entry">Updated Pineapple with current samples 17.12kg -> 732 and 7.47kg -> 81, moving older Pineapple values into history.</div>
+                <div class="changelog-entry">Added Acorn's first sell-value datapoint: 1.60kg -> 235.</div>
+                <div class="changelog-entry">Updated Acorn with 4.70kg Gold -> 44.73k, kept as a Gold mutation check.</div>
+                <div class="changelog-entry">Added Sunflower 10.26kg -> 7.17k and updated Sunflower value estimates.</div>
+                <div class="changelog-entry">Added Mushroom 9.91kg -> 26.24k and updated Mushroom value estimates.</div>
+                <div class="changelog-entry">Added 21.39kg Gold Pineapple -> 15.46k as a mutation recheck.</div>
+                <div class="changelog-entry">Updated Bamboo with current normal samples, added 57.62kg -> ~200k, and logged 7.29kg Electric / 7.87kg Rainbow Bamboo as mutation rechecks.</div>
+                <div class="changelog-entry">Retuned Bamboo with the 59.16kg -> 47.89k normal report and moved the older ~57.62kg -> ~200k sample to recheck status.</div>
+                <div class="changelog-entry">Updated Mushroom with newer 7.59kg -> 16.12k and 10.35kg -> 30.61k samples, and moved the older 8.23kg -> 27.4k value to recheck history.</div>
+                <div class="changelog-entry">Added Baby Cactus sell-value datapoint: 5.14kg -> 1.54k.</div>
+                <div class="changelog-entry">Added Horned Melon sell-value datapoint: 1.77kg -> 7.19k.</div>
+                <div class="changelog-entry">Added Glow Mushroom sell-value datapoint: 9.67kg -> 1.12k.</div>
+                <div class="changelog-entry">Added Poison Ivy sell-value datapoint: 3.64kg -> 3.54k.</div>
+                <div class="changelog-entry">Added Ghost Pepper sell-value datapoint: 12.02kg -> 5.25k.</div>
+                <div class="changelog-entry">Added Ghost Pepper Pack base-value hints: Baby Cactus 70/63, Horned Melon 200/180, Glow Mushroom 700/632, Poison Ivy 1.7K/1,534, and Ghost Pepper 2.5K/2,256.</div>
+                <div class="changelog-entry">Added Venus Fly Trap seed price: 7M.</div>
+                <div class="changelog-entry">Updated Acorn seed price to 700K.</div>
+                <div class="changelog-entry">Updated Pomegranate seed price to 12M.</div>
+                <div class="changelog-entry">Added Pomegranate's first sell-value sample: 2.50kg -> 2.49k, using the first logged value sample.</div>
+                <div class="changelog-entry">Updated Moon Bloom seed price to 65M.</div>
+
+                <div class="changelog-category">Mutations</div>
+                <div class="changelog-entry">Updated the initial mutation table and moved exact value handling into the calculator.</div>
+                <div class="changelog-entry">Added Starstruck mutation tracking and marked older Apple Starstruck samples for recheck.</div>
+                <div class="changelog-entry">Moved older Electric checks into mutation recheck notes.</div>
+                <div class="changelog-entry">Updated Chained calculator handling.</div>
+
+                <div class="changelog-category">Calculator</div>
+                <div class="changelog-entry">Changed the GAG2 mutation picker to allow only one mutation at a time.</div>
+                <div class="changelog-entry">Simplified Bargain output to Bargain cost plus one broad Bargain estimate range.</div>
+                <div class="changelog-entry">Changed plant value output to a broad range so decay and rounded weights are reflected like the GAG1 calculator.</div>
+                <div class="changelog-entry">Added an inventory list with Add to List, item removal, total value range, inventory bargain cost, and inventory bargain value estimates.</div>
+                <div class="changelog-entry">Retuned the Plant Growth calculator from a same-window seven-plant growth sample.</div>
+                <div class="changelog-entry">Added a Plant Growth calculator with 60-second, 60-minute, 6-hour, and 12-hour projections plus a continuous hover graph.</div>
+                <div class="changelog-entry">Sorted Grow a Garden 2 plant buttons from highest to lowest value rank.</div>
+
+                <div class="changelog-category">Pets</div>
+                <div class="changelog-entry">Updated Golden Dragonfly pet price to 9M and Big Golden Dragonfly price to 18M.</div>
+                <div class="changelog-entry">Added abilities for Unicorn, Monkey, Black Dragon, and Ice Serpent pet pages.</div>
+                <div class="changelog-entry">Updated Raccoon as a Super pet: sneaks out at night, steals fruit from empty gardens, and raises steal limit by +25.</div>
+                <div class="changelog-entry">Added Raccoon size scaling: Big raises steal limit by +50 and Huge raises it by +75.</div>
+
+                <div class="changelog-category">Events</div>
+                <div class="changelog-entry">Added Rainbow weather: boosted rainbow luck for about 5 minutes.</div>
+                <div class="changelog-entry">Added Rain and Blood Moon event notes.</div>
+
+                <div class="changelog-category">Gear</div>
+                <div class="changelog-entry">Updated Shrink Mushroom: 0.75x size for 45 seconds.</div>
+                <div class="changelog-entry">Updated Speed Mushroom to +5 speed for 1 minute when consumed, and marked Lantern as a one-time purchase like Sign.</div>
+                <div class="changelog-entry">Updated sprinkler, watering can, Gnome, Basic Pot, Teleporter, Wheelbarrow, and mushroom gear effect descriptions.</div>
+
+                <div class="changelog-category">Systems</div>
+                <div class="changelog-entry">Added more Expand Plot costs: 300k, then 1M.</div>
+                <div class="changelog-entry">Updated Bargaining notes: the fee is about 55% of current value, inventory bargaining can improve only part of the backpack, and offers can range from about 30% more up to 6x.</div>
+                <div class="changelog-entry">Added fruit decay details: fruit loses value when left on plants too long, decayed fruit becomes discolored, and watering cans can clear decay.</div>
+                <div class="changelog-entry">Added plant growth notes: plants can keep gaining size after they look fully grown, and fruit decay can affect sell value.</div>
+
+                <div class="changelog-category">Guilds</div>
+                <div class="changelog-entry">Added a dedicated Guild Events page for weekly event history, objectives, scoring rules, and placement rewards.</div>
+                <div class="changelog-entry">Replaced outdated guild reward placeholders with the Biggest Plant event: heaviest harvest scoring, 1 point per gram, guild totals from each member's best plant, and full placement rewards.</div>
+
+                <div class="changelog-category">Copy & Ads</div>
+                <div class="changelog-entry">Added a 728x90 ad slot between plant value datapoints and the value estimate section on plant wiki pages.</div>
+                <div class="changelog-entry">Added the Calculator Support Discord link to Grow a Garden 2 calculator and wiki headers.</div>
+                <div class="changelog-entry">Cleaned tentative wording on mutation, pet, and value estimate pages.</div>
+                <div class="changelog-entry">Navigation: Added the Calculator Support Discord link to headers.</div>
+            </div>
+
+            <!-- June 12, 2026 -->
+            <div class="changelog-card">
+                <div class="date-badge">📅 June 12, 2026</div>
+                <div class="changelog-category">Release Tracking Build — Launch day</div>
+                <div class="changelog-entry">Calculator: Clarified the Weight Chance result text and added a 728x90 ad slot between Double Routes and Starting Size Bands.</div>
+                <div class="changelog-entry">Calculator: Added plant weight reference data to the Weight Chance calculator and plant wiki weight displays, including future entries like Beanstalk, Lotus, Pine Tree, Romanesco, Thorn Rose, Buttercup, and Pumpkin.</div>
+                <div class="changelog-entry">Calculator: Added the Weight Chance calculator for estimating target crop-weight odds with sprinkler size luck and lucky double routes.</div>
+                <div class="changelog-entry">Calculator: Added the Grow a Garden 2 calculator page with release status, Roblox game link, and discovery-mode notes.</div>
+                <div class="changelog-entry">Calculator: Added selected plant details for source, rarity, weight, and price estimate output.</div>
+                <div class="changelog-entry">Calculator: Made the weight input more visible and added a 200ms calculation delay for smoother updates.</div>
+                <div class="changelog-entry">Calculator: Added amount and friend boost support, with friend boost capped at 70%.</div>
+                
+                <div class="changelog-category">Mutations</div>
+                <div class="changelog-entry">Added Gold and Rainbow as plant mutation entries.</div>
+                <div class="changelog-entry">Added Frozen, Electric, and Starstruck calculator mutations.</div>
+                <div class="changelog-entry">Removed tentative GAG2 mutation picker entries and pages for Wet, Chilled, Moonlit, and Bloodlit.</div>
+                
+                <div class="changelog-category">Plants</div>
+                <div class="changelog-entry">Added Seed Shop plants and Ghost Pepper Pack plants, including Dragon's Breath and pack roll chances.</div>
+                <div class="changelog-entry">Added launch-day seed buy prices for Bamboo 700c, Corn 2.5K, Pineapple 10K, Mushroom 15K, Banana 30K, Coconut 70K, Dragon Fruit 120K, Acorn 700K, and Pomegranate 12M.</div>
+                <div class="changelog-entry">Added sell-value datapoints for Carrot, Strawberry, Blueberry, Tulip, Tomato, Apple, Bamboo, Cactus, Green Bean, and Banana.</div>
+                <div class="changelog-entry">Added Pineapple sell-value datapoints and 6 datapoints.</div>
+                <div class="changelog-entry">Updated Pineapple value estimates after comparing newer samples.</div>
+                <div class="changelog-entry">Added Coconut sell-value datapoints using 5 on-plant weight datapoints, with inventory weights noted for comparison.</div>
+                <div class="changelog-entry">Updated Coconut value estimates after comparing newer samples.</div>
+                <div class="changelog-entry">Added new Dragon's Breath, Pineapple, Corn, Coconut, Bamboo, and Starstruck Apple value datapoints.</div>
+                <div class="changelog-entry">Added Dragon's Breath and Corn calculator estimates, updated Bamboo and Coconut value estimates, and kept conflicting samples marked for recheck.</div>
+                <div class="changelog-entry">Added plant abilities for Mushroom bounce, Moon Bloom low gravity, and Dragon's Breath/Venus Fly Trap base defense.</div>
+                <div class="changelog-entry">Updated Cherry seed price to 1.2M and Dragon's Breath seed price to 90M.</div>
+                <div class="changelog-entry">Added Strawberry and Tomato Electric datapoints, Strawberry Frozen datapoint, and Strawberry Rainbow/Gold datapoints.</div>
+                
+                <div class="changelog-category">Wiki</div>
+                <div class="changelog-entry">Added generated individual pages for plants, pets, gear, props, and mutations, including in-page ad slots.</div>
+                <div class="changelog-entry">Cleaned entry cards and pages to remove redundant stock-empty wording and simplify estimate notes.</div>
+                
+                <div class="changelog-category">Ads</div>
+                <div class="changelog-entry">Moved entry-page inline ads out of the obtainment section and added a 300x250 sidebar ad under the entry card on all wiki item pages.</div>
+                
+                <div class="changelog-category">Pets</div>
+                <div class="changelog-entry">Added pet pages for Bunny, Frog, Deer, Robin, Bee, Owl, Big Owl, Golden Dragonfly, and Raccoon.</div>
+                <div class="changelog-entry">Added Unicorn as a pet entry with a 12M price and Rainbow-chance ability.</div>
+                <div class="changelog-entry">Added pet prices, abilities, Big/Huge notes, active pet slots, and pet stealing price-doubling notes.</div>
+                
+                <div class="changelog-category">Gear</div>
+                <div class="changelog-entry">Added Gear Shop item pages for watering cans, sprinklers, tools, mushrooms, pots, and utility items.</div>
+                <div class="changelog-entry">Added confirmed gear effects for watering cans, sprinklers, Lantern, Trowel, Gnome, and temporary mushroom items.</div>
+                <div class="changelog-entry">Added Sign as a handheld communication gear for writing messages to other players.</div>
+                
+                <div class="changelog-category">Props</div>
+                <div class="changelog-entry">Added Props Shop crate pages with crate prices, rarity, stock, and item odds.</div>
+                
+                <div class="changelog-category">Codes</div>
+                <div class="changelog-entry">Added the Codes page with TEAMGREENBEAN and a click-to-copy button.</div>
+                
+                <div class="changelog-category">Systems</div>
+                <div class="changelog-entry">Added day/night timing, fruit decay, plot expansion costs, guild creation cost, and active pet slot upgrade notes.</div>
+                
+                <div class="changelog-category">Events</div>
+                <div class="changelog-entry">Added Snowfall, Lightning/Shocked, Frozen, and Electric event notes.</div>
+                <div class="changelog-entry">Added Starfall weather, Starstruck fruit, a 2m30s event duration, and back-to-back event behavior.</div>
+                <div class="changelog-entry">Expanded Midas event notes with strike-area behavior, shared Midas hits, stolen fruit turning Gold, and multiple permanent Gold Seed spawns.</div>
+                
+                <div class="changelog-category">Guilds</div>
+                <div class="changelog-entry">Added the first guild event tracking structure for weekly reward notes.</div>
+                
+                <div class="changelog-category">Pets (Confirmed)</div>
+                <div class="changelog-entry">Confirmed Big Golden Dragonfly multiplies Gold chance by 3x.</div>
+                
+                <div class="changelog-category">Changelog</div>
+                <div class="changelog-entry">Added this changelog page and linked it from the Grow a Garden 2 footer and wiki navigation.</div>
+            </div>
+
+            <div class="text-center text-zinc-500 text-xs mt-8">
+                <p>Changelog is updated live as new discoveries and features are added. Check back often.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-16 text-center">
+        <div class="main-container">
+            <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-8">
+                <a href="/" class="hover:text-emerald-500">Main Calculator</a>
+                <a href="/wiki" class="hover:text-emerald-500">Wiki</a>
+                <a href="/changelog" class="text-emerald-500">Changelog</a>
+                <a href="/contact" class="hover:text-emerald-500">Contact</a>
+                <a href="/privacy" class="hover:text-emerald-500">Privacy</a>
+                <a href="/terms" class="hover:text-emerald-500">Terms</a>
+            </div>
+            <p class="text-[9px] text-zinc-700 font-black uppercase tracking-[0.4em]">Made by Awesomedu &copy; 2024</p>
+        </div>
+    </footer>
+</body>
+</html>

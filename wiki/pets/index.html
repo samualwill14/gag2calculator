@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grow a Garden 2 Pet Tier List | All Pets Ranked</title>
+    <link rel="canonical" href="https://gag2.inficalc.com/wiki/pets/" />
+    <meta name="description" content="Complete Grow a Garden 2 pet tier list with rankings, abilities, traits, and detailed breakdown. Find the best pets for farming, defense, and mutations.">
+    <meta property="og:title" content="Grow a Garden 2 Pet Tier List | All Pets Ranked">
+    <meta property="og:description" content="Complete Grow a Garden 2 pet tier list with rankings, abilities, traits, and detailed breakdown. Find the best pets for farming, defense, and mutations.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://gag2.inficalc.com/wiki/pets/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the best pet in Grow a Garden 2?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The best pets in Grow a Garden 2 are Raccoon, Unicorn, Black Dragon, and Ice Serpent. These S-Tier pets provide the most powerful bonuses including stealing, rainbow mutations, and base defense."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I get pets in Grow a Garden 2?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pets randomly appear on the map. Walk up to them and purchase them with sheckles. Prices range from 10k for Common pets to 15M+ for Mythic and Super pets."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does the Raccoon pet do in Grow a Garden 2?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Raccoon is an S-Tier pet that sneaks out at night to steal fruit from empty gardens and raises your steal limit by +25. Big Raccoon increases steal limit by +50 and Huge Raccoon by +75."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What pets are best for defense in Grow a Garden 2?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Black Dragon and Ice Serpent are the best defensive pets. Black Dragon breathes fire on intruders while Ice Serpent freezes them solid. Bee also provides protection by stinging intruders."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do Big and Huge pets have better abilities?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Big and Huge variants typically provide improved bonuses. For example, Big Bunny gives +10 walk speed instead of +5, and Big Golden Dragonfly multiplies Gold chance by 3x instead of 2x."
+                }
+            }
+        ]
+    }
+    </script>
+    <style>
+        :root {
+            --bg: #070708;
+            --card: #111114;
+            --accent: #10b981;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+        * { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: #ececed; margin: 0; padding: 0; }
+        
+        .main-container {
+            max-width: 100%;
+            padding: 0 16px;
+        }
+        @media (min-width: 1280px) {
+            .main-container { max-width: 1400px; margin: 0 auto; }
+        }
+        
+        .wiki-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: 0.2s;
+            padding: 24px;
+        }
+        .wiki-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .pill {
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 40px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        .pill-common { background: #3f3f46; color: #d4d4d8; }
+        .pill-uncommon { background: #2563eb; color: white; }
+        .pill-rare { background: #0891b2; color: white; }
+        .pill-epic { background: #9333ea; color: white; }
+        .pill-legendary { background: #f59e0b; color: black; }
+        .pill-mythic { background: #ec489a; color: white; }
+        .pill-super { background: #ef4444; color: white; }
+        .pill-pack { background: #8b5cf6; color: white; }
+        
+        .tier-s { background: linear-gradient(135deg, #f59e0b, #f97316); color: black; }
+        .tier-a { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; }
+        .tier-b { background: linear-gradient(135deg, #10b981, #34d399); color: black; }
+        .tier-c { background: linear-gradient(135deg, #6b7280, #9ca3af); color: white; }
+        
+        .tier-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .tier-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #71717a;
+            border-bottom: 1px solid var(--border);
+        }
+        .tier-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            vertical-align: middle;
+        }
+        .tier-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        .pet-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .pet-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .pet-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #0a0a0c;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 480px) {
+            .pet-card img { width: 65px; height: 65px; }
+            .pet-card h3 { font-size: 0.75rem; }
+        }
+        .pet-card h3 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 6px 0 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        
+        .pets-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (min-width: 640px) {
+            .pets-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .pets-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item p {
+            color: #a1a1aa;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+        
+        .source-label {
+            font-size: 8px;
+            color: #71717a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 5px;
+        }
+        .price-label {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .tier-table td, .tier-table th {
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+            .tier-table td:first-child, .tier-table th:first-child {
+                padding-left: 12px;
+            }
+            .tier-table td:last-child, .tier-table th:last-child {
+                padding-right: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="border-b border-white/5 py-5 mb-8">
+        <div class="main-container flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500 rounded-xl flex items-center justify-center font-black text-black px-4 py-2 text-base">GAG2</div>
+                <h1 class="text-xl font-black tracking-tight uppercase">Grow a Garden 2 <span class="text-zinc-500 font-medium text-xs">Pet Wiki</span></h1>
+            </div>
+            <nav class="flex gap-5 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                <a href="../../../" class="hover:text-emerald-500 transition">Calculator</a>
+                <a href="../../" class="hover:text-emerald-500 transition">Wiki Home</a>
+                <a href="../plants/" class="hover:text-emerald-500 transition">Plants</a>
+                <a href="./" class="text-emerald-500 transition">Pets</a>
+                <a href="../gears/" class="hover:text-emerald-500 transition">Gear</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500 transition">Changelog</a>
+                <a href="../../codes" class="hover:text-emerald-500 transition">Codes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <div class="inline-block bg-emerald-500/10 text-emerald-500 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-3">Tier List</div>
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">Grow a Garden 2 Pet Tier List</h1>
+            <p class="text-zinc-400 text-sm max-w-3xl mx-auto">The pet system is one of the most adorable additions to Grow a Garden 2 that adds a touch of customization to your gameplay. Not only does your pet follow you all around the lobby, but they also come with some unique buffs that impact your income, movement speed, plant growth, and more. Check this list for the Grow a Garden 2 pet tier list, as it will help you choose the right pets with the best abilities.</p>
+            <p class="text-zinc-500 text-xs mt-4">📅 Updated: June 15, 2026</p>
+        </div>
+        
+        <!-- All Pets Grid -->
+        <div class="wiki-card mb-8">
+            <h2 class="text-2xl font-black uppercase tracking-tighter mb-4">All Pets</h2>
+            <p class="text-zinc-400 text-sm mb-6">Browse every pet in Grow a Garden 2. Click any card for ability, spawn details, size variants, and price notes.</p>
+            <div class="pets-grid">
+                <!-- Common -->
+                <a href="./bunny/" class="pet-card">
+                    <img src="../../img/bunny.webp" alt="Bunny" loading="lazy">
+                    <h3>Bunny</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">20k</span>
+                </a>
+                <a href="./frog/" class="pet-card">
+                    <img src="../../img/frog.webp" alt="Frog" loading="lazy">
+                    <h3>Frog</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">10k</span>
+                </a>
+
+                <!-- Uncommon -->
+                <a href="./owl/" class="pet-card">
+                    <img src="../../img/owl.webp" alt="Owl" loading="lazy">
+                    <h3>Owl</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">25k</span>
+                </a>
+                <a href="./bigowl/" class="pet-card">
+                    <img src="../../img/bigowl.webp" alt="Big Owl" loading="lazy">
+                    <h3>Big Owl</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">50k</span>
+                </a>
+
+                <!-- Rare -->
+                <a href="./deer/" class="pet-card">
+                    <img src="../../img/deer.webp" alt="Deer" loading="lazy">
+                    <h3>Deer</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">50k</span>
+                </a>
+
+                <!-- Legendary -->
+                <a href="./robin/" class="pet-card">
+                    <img src="../../img/robin.webp" alt="Robin" loading="lazy">
+                    <h3>Robin</h3>
+                    <span class="pill pill-legendary">Legendary</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">75k</span>
+                </a>
+                <a href="./bee/" class="pet-card">
+                    <img src="../../img/bee.webp" alt="Bee" loading="lazy">
+                    <h3>Bee</h3>
+                    <span class="pill pill-legendary">Legendary</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">1M</span>
+                </a>
+
+                <!-- Mythic -->
+                <a href="./goldendragonfly/" class="pet-card">
+                    <img src="../../img/goldendragonfly.webp" alt="Golden Dragonfly" loading="lazy">
+                    <h3>Golden Dragonfly</h3>
+                    <span class="pill pill-mythic">Mythic</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">9M</span>
+                </a>
+                <a href="./raccoon/" class="pet-card">
+                    <img src="../../img/raccoon.webp" alt="Raccoon" loading="lazy">
+                    <h3>Raccoon</h3>
+                    <span class="pill pill-mythic">Mythic</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">15M</span>
+                </a>
+                <a href="./unicorn/" class="pet-card">
+                    <img src="../../img/unicorn.webp" alt="Unicorn" loading="lazy">
+                    <h3>Unicorn</h3>
+                    <span class="pill pill-mythic">Mythic</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">12M</span>
+                </a>
+                <a href="./monkey/" class="pet-card">
+                    <img src="../../img/monkey.webp" alt="Monkey" loading="lazy">
+                    <h3>Monkey</h3>
+                    <span class="pill pill-mythic">Mythic</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">Not confirmed</span>
+                </a>
+
+                <!-- Super -->
+                <a href="./blackdragon/" class="pet-card">
+                    <img src="../../img/blackdragon.webp" alt="Black Dragon" loading="lazy">
+                    <h3>Black Dragon</h3>
+                    <span class="pill pill-super">Super</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">Not confirmed</span>
+                </a>
+                <a href="./iceserpent/" class="pet-card">
+                    <img src="../../img/iceserpent.webp" alt="Ice Serpent" loading="lazy">
+                    <h3>Ice Serpent</h3>
+                    <span class="pill pill-super">Super</span>
+                    <span class="source-label">Map pet spawn</span>
+                    <span class="price-label">Not confirmed</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tier List Overview -->
+        <div class="wiki-card mb-8">
+            <h2 class="text-2xl font-black uppercase tracking-tighter mb-4">Grow a Garden 2 Pet Tier List: Overview</h2>
+            <p class="text-zinc-400 text-sm mb-6">There are a total of 13 Grow a Garden 2 pets, which can be obtained by purchasing directly from the lobby. While some of these companions can offer bonuses that help throughout the stages of the game, others are more niche and useful only during specific circumstances. For the Grow a Garden 2 pet tier list, we have ranked them based on their passive buffs and defensive capabilities.</p>
+            
+            <div class="overflow-x-auto">
+                <table class="tier-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Pets</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="pill tier-s">S Tier</span></td>
+                            <td><strong>Raccoon, Unicorn, Black Dragon, Ice Serpent</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pill tier-a">A Tier</span></td>
+                            <td><strong>Bee, Golden Dragonfly, Deer, Bunny</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pill tier-b">B Tier</span></td>
+                            <td><strong>Frog</strong></td>
+                        </tr>
+                        <tr>
+                            <td><span class="pill tier-c">C Tier</span></td>
+                            <td><strong>Robin, Owl, Monkey</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-zinc-500 mt-4">While the S-Tier holds some of the best pets capable of providing you with game-changing bonuses, the ones in the lower tiers are helpful only during the early stages.</p>
+        </div>
+
+        <!-- Tier List Explained -->
+        <div class="wiki-card mb-8">
+            <h2 class="text-2xl font-black uppercase tracking-tighter mb-4">Grow a Garden 2 Pet Tier List Explained</h2>
+            <p class="text-zinc-400 text-sm mb-6">As you can see in our GAG 2 tier list for pets, many sit at the S and A tiers. Given that the game revolves around stealing and defending, the aggressive pets rank higher in the list.</p>
+
+            <!-- S Tier -->
+            <h3 class="text-xl font-black uppercase tracking-tight text-emerald-500 mb-3">🌟 S-Tier Pets</h3>
+            <p class="text-zinc-400 text-sm mb-4">In the S-Tier, most of the pets can provide the most overpowered bonuses and effects that can help you stack up cash easily. While the Raccoon pet has stealing abilities, the Unicorn provides better chances of plants being mutated to Rainbow. Apart from that, the Black Dragon and Ice Serpent can both provide tight protection to your base.</p>
+            <div class="overflow-x-auto">
+                <table class="tier-table">
+                    <thead>
+                        <tr><th>Pet</th><th>Traits</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="./raccoon/" class="text-emerald-500 hover:underline font-bold">Raccoon</a></td><td>Steals from other players during the night and increases the steal stash by +25</td></tr>
+                        <tr><td><a href="./unicorn/" class="text-emerald-500 hover:underline font-bold">Unicorn</a></td><td>Boosts the chances of crops getting the rainbow mutation</td></tr>
+                        <tr><td><a href="./blackdragon/" class="text-emerald-500 hover:underline font-bold">Black Dragon</a></td><td>Sets the intruders on fire</td></tr>
+                        <tr><td><a href="./iceserpent/" class="text-emerald-500 hover:underline font-bold">Ice Serpent</a></td><td>Freezes the intruders and turns them into ice</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- A Tier -->
+            <h3 class="text-xl font-black uppercase tracking-tight text-blue-400 mt-8 mb-3">⭐ A-Tier Pets</h3>
+            <p class="text-zinc-400 text-sm mb-4">The A-Tier in the Grow a Garden 2 pet tier list consists of those companions who can grant you some highly useful buffs necessary for the core game mechanic. While the deer can boost the plant growth rate, the bunny hops around and boosts your movement speed. Other than that, the Golden Dragonfly flies in your garden and provides a bonus chance of plants having the golden mutation, whereas the Bee can protect your base from other players.</p>
+            <div class="overflow-x-auto">
+                <table class="tier-table">
+                    <thead>
+                        <tr><th>Pet</th><th>Traits</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="./bee/" class="text-emerald-500 hover:underline font-bold">Bee</a></td><td>Protects your plot and stings any incoming players who try to steal fruits.</td></tr>
+                        <tr><td><a href="./goldendragonfly/" class="text-emerald-500 hover:underline font-bold">Golden Dragonfly</a></td><td>Increases the chance of gold mutation among the plants in your garden</td></tr>
+                        <tr><td><a href="./deer/" class="text-emerald-500 hover:underline font-bold">Deer</a></td><td>Increases the growth rate of plants in your garden</td></tr>
+                        <tr><td><a href="./bunny/" class="text-emerald-500 hover:underline font-bold">Bunny</a></td><td>Increases your movement speed, and the effect can stack with more bunnies in your team.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- B Tier -->
+            <h3 class="text-xl font-black uppercase tracking-tight text-emerald-400 mt-8 mb-3">🟢 B-Tier Pets</h3>
+            <p class="text-zinc-400 text-sm mb-4">Coming to the B-Tier of pets, the only one standing here is the Frog. You may require such a pet at the early stages of the game when climbing taller plants is quite difficult. However, moving to the later and end-game stages, having such pets in your team would only occupy the slots and provide no benefit in return.</p>
+            <div class="overflow-x-auto">
+                <table class="tier-table">
+                    <thead>
+                        <tr><th>Pet</th><th>Traits</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="./frog/" class="text-emerald-500 hover:underline font-bold">Frog</a></td><td>Helps in increasing the jump height of the player</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- C Tier -->
+            <h3 class="text-xl font-black uppercase tracking-tight text-zinc-400 mt-8 mb-3">⚪ C-Tier Pets</h3>
+            <p class="text-zinc-400 text-sm mb-4">Finally, the C-Tier consists of the worst-performing pets in the game. Most of their buffs and abilities are so broken that you might not even receive a part of what they are really designed for. The Robin and Owl are the best examples because neither does the former give you good seeds, nor does the latter provide a useful ability.</p>
+            <div class="overflow-x-auto">
+                <table class="tier-table">
+                    <thead>
+                        <tr><th>Pet</th><th>Traits</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="./robin/" class="text-emerald-500 hover:underline font-bold">Robin</a></td><td>Eats the ripe plants and occasionally drops Grow a Garden plant seeds</td></tr>
+                        <tr><td><a href="./owl/" class="text-emerald-500 hover:underline font-bold">Owl</a></td><td>Improves the view during the nighttime and hoots loudly upon spotting a rare pet spawn</td></tr>
+                        <tr><td><a href="./monkey/" class="text-emerald-500 hover:underline font-bold">Monkey</a></td><td>Occasionally brings a ripe fruit to you.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        
+
+        <!-- FAQ Section -->
+        <div class="wiki-card">
+            <h2 class="text-2xl font-black uppercase tracking-tighter mb-4">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>What is the best pet in Grow a Garden 2?</h3>
+                <p>The best pets in Grow a Garden 2 are <strong>Raccoon, Unicorn, Black Dragon, and Ice Serpent</strong>. These S-Tier pets provide the most powerful bonuses including stealing, rainbow mutations, and base defense.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I get pets in Grow a Garden 2?</h3>
+                <p>Pets randomly appear on the map. Walk up to them and purchase them with sheckles. Prices range from 10k for Common pets to 15M+ for Mythic and Super pets.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What does the Raccoon pet do in Grow a Garden 2?</h3>
+                <p>Raccoon is an S-Tier pet that sneaks out at night to steal fruit from empty gardens and raises your steal limit by +25. Big Raccoon increases steal limit by +50 and Huge Raccoon by +75.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What pets are best for defense in Grow a Garden 2?</h3>
+                <p><strong>Black Dragon</strong> and <strong>Ice Serpent</strong> are the best defensive pets. Black Dragon breathes fire on intruders while Ice Serpent freezes them solid. Bee also provides protection by stinging intruders.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do Big and Huge pets have better abilities?</h3>
+                <p>Yes! Big and Huge variants typically provide improved bonuses. For example, Big Bunny gives +10 walk speed instead of +5, and Big Golden Dragonfly multiplies Gold chance by 3x instead of 2x.</p>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center text-zinc-500 text-xs border-t border-white/5 pt-8">
+            <p>All pet pages are actively maintained with latest ability and price updates.<br>Missing a pet? Contact us via Discord or the <a href="../../../contact/" class="text-emerald-500 hover:underline">contact form</a>.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 text-center mt-12">
+        <div class="main-container">
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-6">
+                <a href="../../../" class="hover:text-emerald-500">Calculator</a>
+                <a href="../../" class="hover:text-emerald-500">Wiki Home</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500">Changelog</a>
+                <a href="../../../contact/" class="hover:text-emerald-500">Contact</a>
+                <a href="../../../privacy-policy/" class="hover:text-emerald-500">Privacy</a>
+                <a href="../../../terms-of-service/" class="hover:text-emerald-500">Terms</a>
+            </div>
+            <p class="text-[8px] text-zinc-700 font-black uppercase tracking-[0.4em]">Made by maxwidgets &copy; 2024 — Fan content, not official</p>
+        </div>
+    </footer>
+
+</body>
+</html>

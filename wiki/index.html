@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Grow a Garden 2 Wiki | Plants, Pets, Gear & More</title>
+    <link rel="canonical" href="https://gag2.inficalc.com/wiki/" />
+    <meta name="description" content="The ultimate Grow a Garden 2 Wiki – browse all plants, pets, gear, and tools. Find seed values, pet abilities, gear stats, and tier lists.">
+    <meta property="og:title" content="Grow a Garden 2 Wiki | Plants, Pets, Gear & More">
+    <meta property="og:description" content="The ultimate Grow a Garden 2 Wiki – browse all plants, pets, gear, and tools. Find seed values, pet abilities, gear stats, and tier lists.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gag2.inficalc.com/wiki/">
+    <meta property="og:image" content="https://gag2.inficalc.com/img/icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #070708;
+            --card: #111114;
+            --accent: #10b981;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+        * { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: #ececed; margin: 0; padding: 0; }
+        
+        .main-container {
+            max-width: 100%;
+            padding: 0 16px;
+        }
+        @media (min-width: 1280px) {
+            .main-container { max-width: 1400px; margin: 0 auto; }
+        }
+        
+        .wiki-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: 0.2s;
+            padding: 24px;
+        }
+        .wiki-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .plant-card, .pet-card, .gear-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .plant-card:hover, .pet-card:hover, .gear-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .plant-card img, .pet-card img, .gear-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #0a0a0c;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 480px) {
+            .plant-card img, .pet-card img, .gear-card img { width: 65px; height: 65px; }
+            .plant-card h3, .pet-card h3, .gear-card h3 { font-size: 0.75rem; }
+        }
+        .plant-card h3, .pet-card h3, .gear-card h3 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 6px 0 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        .pill {
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 40px;
+            display: inline-block;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .pill-common { background: #3f3f46; color: #d4d4d8; }
+        .pill-uncommon { background: #2563eb; color: white; }
+        .pill-rare { background: #0891b2; color: white; }
+        .pill-epic { background: #9333ea; color: white; }
+        .pill-legendary { background: #f59e0b; color: black; }
+        .pill-mythic { background: #ec489a; color: white; }
+        .pill-super { background: #ef4444; color: white; }
+        .pill-pack { background: #8b5cf6; color: white; }
+        
+        .source-label {
+            font-size: 8px;
+            color: #71717a;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-top: 5px;
+        }
+        .price-label {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 3px;
+        }
+        
+        .grid-10 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (min-width: 640px) {
+            .grid-10 { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .grid-10 { grid-template-columns: repeat(5, 1fr); }
+        }
+        
+        .view-all-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 8px 20px;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .view-all-link:hover {
+            background: var(--accent);
+            color: black;
+            border-color: var(--accent);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .section-sub {
+            color: #a1a1aa;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-btn {
+            background: var(--accent);
+            color: black;
+            font-weight: 800;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+        .hero-btn:hover {
+            background: #0d9488;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="border-b border-white/5 py-5 mb-8">
+        <div class="main-container flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500 rounded-xl flex items-center justify-center font-black text-black px-4 py-2 text-base">GAG2</div>
+                <h1 class="text-xl font-black tracking-tight uppercase">Grow a Garden 2 <span class="text-zinc-500 font-medium text-xs">Wiki</span></h1>
+            </div>
+            <nav class="flex gap-5 text-[10px] font-black uppercase tracking-widest text-zinc-400">
+                <a href="../../" class="hover:text-emerald-500 transition">Calculator</a>
+                <a href="./" class="text-emerald-500 transition">Wiki Home</a>
+                <a href="./plants/" class="hover:text-emerald-500 transition">Plants</a>
+                <a href="./pets/" class="hover:text-emerald-500 transition">Pets</a>
+                <a href="./gears/" class="hover:text-emerald-500 transition">Gears</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500 transition">Changelog</a>
+                <a href="../codes" class="hover:text-emerald-500 transition">Codes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Hero -->
+        <div class="text-center py-8 mb-12">
+            <div class="inline-block bg-emerald-500/10 text-emerald-500 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-4">Wiki</div>
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">Welcome to the Wiki</h1>
+            <p class="text-zinc-400 text-base max-w-2xl mx-auto">Your complete resource for <strong class="text-emerald-500">plants</strong>, <strong class="text-emerald-500">pets</strong>, and <strong class="text-emerald-500">gear</strong> in Grow a Garden 2. Find seed prices, pet abilities, gear stats, tier lists, and more.</p>
+            <div class="mt-6 flex flex-wrap justify-center gap-4">
+                <a href="../../" class="hero-btn">Open Calculator →</a>
+                <a href="#plants" class="border border-white/10 text-zinc-300 font-black px-6 py-3 rounded-xl text-sm uppercase tracking-wider hover:border-emerald-500 transition">Browse Wiki</a>
+            </div>
+        </div>
+
+        <!-- Plants Section -->
+        <section id="plants" class="mb-16">
+            <div class="flex justify-between items-end mb-4 flex-wrap gap-2">
+                <div>
+                    <h2 class="section-title">🌱 Plants</h2>
+                    <p class="section-sub">Explore seed values, mutations, and growth details</p>
+                </div>
+                <a href="./plants/" class="view-all-link">→ All Plants</a>
+            </div>
+            <div class="grid-10">
+                <!-- First 10 plants (matching the order in plants/index) -->
+                <a href="./plants/carrot/" class="plant-card">
+                    <img src="../../img/carrot.webp" alt="Carrot" loading="lazy">
+                    <h3>Carrot</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/strawberry/" class="plant-card">
+                    <img src="../../img/strawberry.webp" alt="Strawberry" loading="lazy">
+                    <h3>Strawberry</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/blueberry/" class="plant-card">
+                    <img src="../../img/blueberry.webp" alt="Blueberry" loading="lazy">
+                    <h3>Blueberry</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/tulip/" class="plant-card">
+                    <img src="../../img/tulip.webp" alt="Tulip" loading="lazy">
+                    <h3>Tulip</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/tomato/" class="plant-card">
+                    <img src="../../img/tomato.webp" alt="Tomato" loading="lazy">
+                    <h3>Tomato</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/apple/" class="plant-card">
+                    <img src="../../img/apple.webp" alt="Apple" loading="lazy">
+                    <h3>Apple</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/bamboo/" class="plant-card">
+                    <img src="../../img/bamboo.webp" alt="Bamboo" loading="lazy">
+                    <h3>Bamboo</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/corn/" class="plant-card">
+                    <img src="../../img/corn.webp" alt="Corn" loading="lazy">
+                    <h3>Corn</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/cactus/" class="plant-card">
+                    <img src="../../img/cactus.webp" alt="Cactus" loading="lazy">
+                    <h3>Cactus</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+                <a href="./plants/pineapple/" class="plant-card">
+                    <img src="../../img/pineapple.webp" alt="Pineapple" loading="lazy">
+                    <h3>Pineapple</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Seed Shop</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Pets Section -->
+        <section id="pets" class="mb-16">
+            <div class="flex justify-between items-end mb-4 flex-wrap gap-2">
+                <div>
+                    <h2 class="section-title">🐾 Pets</h2>
+                    <p class="section-sub">Abilities, sizes, spawn locations, and prices</p>
+                </div>
+                <a href="./pets/" class="view-all-link">→ All Pets</a>
+            </div>
+            <div class="grid-10">
+                <!-- First 10 pets -->
+                <a href="./pets/bunny/" class="pet-card">
+                    <img src="../../img/bunny.webp" alt="Bunny" loading="lazy">
+                    <h3>Bunny</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/frog/" class="pet-card">
+                    <img src="../../img/frog.webp" alt="Frog" loading="lazy">
+                    <h3>Frog</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/owl/" class="pet-card">
+                    <img src="../../img/owl.webp" alt="Owl" loading="lazy">
+                    <h3>Owl</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/bigowl/" class="pet-card">
+                    <img src="../../img/bigowl.webp" alt="Big Owl" loading="lazy">
+                    <h3>Big Owl</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/deer/" class="pet-card">
+                    <img src="../../img/deer.webp" alt="Deer" loading="lazy">
+                    <h3>Deer</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/robin/" class="pet-card">
+                    <img src="../../img/robin.webp" alt="Robin" loading="lazy">
+                    <h3>Robin</h3>
+                    <span class="pill pill-legendary">Legendary</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/bee/" class="pet-card">
+                    <img src="../../img/bee.webp" alt="Bee" loading="lazy">
+                    <h3>Bee</h3>
+                    <span class="pill pill-legendary">Legendary</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/goldendragonfly/" class="pet-card">
+                    <img src="../../img/goldendragonfly.webp" alt="Golden Dragonfly" loading="lazy">
+                    <h3>Golden Dragonfly</h3>
+                    <span class="pill pill-mythic">Mythic</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/raccoon/" class="pet-card">
+                    <img src="../../img/raccoon.webp" alt="Raccoon" loading="lazy">
+                    <h3>Raccoon</h3>
+                    <span class="pill pill-mythic">Mythic</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+                <a href="./pets/unicorn/" class="pet-card">
+                    <img src="../../img/unicorn.webp" alt="Unicorn" loading="lazy">
+                    <h3>Unicorn</h3>
+                    <span class="pill pill-mythic">Mythic</span>
+                    <span class="source-label">Map spawn</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Gear Section -->
+        <section id="gear" class="mb-16">
+            <div class="flex justify-between items-end mb-4 flex-wrap gap-2">
+                <div>
+                    <h2 class="section-title">🛠️ Gear</h2>
+                    <p class="section-sub">Watering cans, sprinklers, mushrooms, tools, and more</p>
+                </div>
+                <a href="./gears/" class="view-all-link">→ All Gear</a>
+            </div>
+            <div class="grid-10">
+                <!-- First 10 gear items -->
+                <a href="./gears/commonwateringcan/" class="gear-card">
+                    <img src="../../img/commonwateringcan.webp" alt="Common Watering Can" loading="lazy">
+                    <h3>Common Watering Can</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/commonsprinkler/" class="gear-card">
+                    <img src="../../img/commonsprinkler.webp" alt="Common Sprinkler" loading="lazy">
+                    <h3>Common Sprinkler</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/sign/" class="gear-card">
+                    <img src="../../img/sign.webp" alt="Sign" loading="lazy">
+                    <h3>Sign</h3>
+                    <span class="pill pill-common">Common</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/uncommonsprinkler/" class="gear-card">
+                    <img src="../../img/uncommonsprinkler.webp" alt="Uncommon Sprinkler" loading="lazy">
+                    <h3>Uncommon Sprinkler</h3>
+                    <span class="pill pill-uncommon">Uncommon</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/trowel/" class="gear-card">
+                    <img src="../../img/trowel.webp" alt="Trowel" loading="lazy">
+                    <h3>Trowel</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/raresprinkler/" class="gear-card">
+                    <img src="../../img/raresprinkler.webp" alt="Rare Sprinkler" loading="lazy">
+                    <h3>Rare Sprinkler</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/jumpmushroom/" class="gear-card">
+                    <img src="../../img/jumpmushroom.webp" alt="Jump Mushroom" loading="lazy">
+                    <h3>Jump Mushroom</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/speedmushroom/" class="gear-card">
+                    <img src="../../img/speedmushroom.webp" alt="Speed Mushroom" loading="lazy">
+                    <h3>Speed Mushroom</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/lantern/" class="gear-card">
+                    <img src="../../img/lantern.webp" alt="Lantern" loading="lazy">
+                    <h3>Lantern</h3>
+                    <span class="pill pill-rare">Rare</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+                <a href="./gears/shrinkmushroom/" class="gear-card">
+                    <img src="../../img/shrinkmushroom.webp" alt="Shrink Mushroom" loading="lazy">
+                    <h3>Shrink Mushroom</h3>
+                    <span class="pill pill-epic">Epic</span>
+                    <span class="source-label">Gear Shop</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <div class="text-center py-12 border-t border-white/5">
+            <p class="text-zinc-400 text-sm mb-4">Looking for something else? Use the full calculator to estimate plant values, pet boosts, and gear effects.</p>
+            <a href="../../" class="bg-emerald-500 text-black font-black px-8 py-3 rounded-xl text-sm uppercase tracking-wider hover:bg-emerald-400 transition inline-block">Go to Calculator →</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-12 text-center mt-8">
+        <div class="main-container">
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600 mb-6">
+                <a href="../../" class="hover:text-emerald-500">Calculator</a>
+                <a href="./" class="text-emerald-500">Wiki Home</a>
+                <a href="./plants/" class="hover:text-emerald-500">Plants</a>
+                <a href="./pets/" class="hover:text-emerald-500">Pets</a>
+                <a href="./gear/" class="hover:text-emerald-500">Gear</a>
+                <a href="https://gag2.inficalc.com/changelog" class="hover:text-emerald-500">Changelog</a>
+                <a href="../../contact/" class="hover:text-emerald-500">Contact</a>
+                <a href="../../privacy-policy/" class="hover:text-emerald-500">Privacy</a>
+                <a href="../../terms-of-service/" class="hover:text-emerald-500">Terms</a>
+            </div>
+            <p class="text-[8px] text-zinc-700 font-black uppercase tracking-[0.4em]">Made by maxwidgets &copy; 2024 — Fan content, not official</p>
+        </div>
+    </footer>
+</body>
+</html>
