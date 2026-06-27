@@ -1,7 +1,7 @@
 # 🌱 Grow a Garden 2 Calculator – GAG2 Calculator
 
 [![Website](https://img.shields.io/badge/Website-Gag2calc.com-blue)](https://gag2calc.com)
-[![GitHub](https://img.shields.io/badge/GitHub-GrowAGarden2Calculator-green)](https://github.com/a136332462/GrowAGarden2Calculator)
+[![GitHub](https://img.shields.io/badge/GitHub-GrowAGarden2Calculator-green)](https://github.com/samualwill14/gag2calculator/)
 [![Next.js](https://img.shields.io/badge/Next.js-15.3.0-black)](https://nextjs.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
